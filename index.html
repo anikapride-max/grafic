@@ -6,7 +6,7 @@
 <title>График — Июнь 2026 🔄 Автосинхронизация с Google Sheets</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <style>
-/* ===== ВСЕ СТИЛИ (без изменений, такие же, как в предыдущем рабочем варианте) ===== */
+/* ===== ВСЕ СТИЛИ (те же, что были) ===== */
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:Arial,sans-serif;font-size:13px;background:#fff}
 .header{background:linear-gradient(135deg,#1F4E78,#2E5C8A);color:#fff;padding:15px;text-align:center;position:sticky;top:0;z-index:300;font-size:18px;box-shadow:0 4px 8px rgba(0,0,0,0.2)}
@@ -125,7 +125,7 @@ body{font-family:Arial,sans-serif;font-size:13px;background:#fff}
     <button class="quick-btn" style="background:#607D8B;color:white" onclick="logout()">🚪 Выход</button>
 </div>
 
-<div class="status-bar" id="status">✅ Норма: 171.6ч • Автосохранение каждые 10 сек в облако</div>
+<div class="status-bar" id="status">✅ Норма: 171.6ч • Автосохранение в Google Sheets</div>
 
 <div class="table-container" id="tblContainer">
     <table class="excel-table" id="tbl">
@@ -152,25 +152,133 @@ body{font-family:Arial,sans-serif;font-size:13px;background:#fff}
     <td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable weekend"></td><td class="empty editable holiday"></td>
     <td class="empty editable"></td><td class="empty editable"></td>
     <td class="shifts-col">0</td><td class="hours-col">0.0</td><td class="remainder-col positive">+171.6</td></tr>
-    <tr class="night-row" data-norm="171.6"><td>Сухова</td>... (аналогично)</tr>
-    <tr class="night-row" data-norm="171.6"><td>Чупрова</td>...</tr>
-    <tr class="night-row" data-norm="171.6"><td>Быкова</td>...</tr>
-    <tr class="night-row" data-norm="171.6"><td>Гомбоева</td>...</tr>
-    <tr class="night-row" data-norm="128.7"><td>Зюкова 0.75</td>...</tr>
-    <tr class="night-row" data-norm="171.6"><td>Ефимова</td>...</tr>
-    <tr class="night-row" data-norm="171.6"><td>Гайсин</td>...</tr>
-    <tr class="night-row" data-norm="171.6"><td>Конькова</td>...</tr>
-    <tr class="night-row" data-norm="171.6"><td>Голубева</td>...</tr>
-    <tr class="night-row" data-norm="171.6"><td>Засыпкина</td>...</tr>
-    <tr class="night-row" data-norm="171.6"><td>Сафронова</td>...</tr>
-    <tr class="night-row" data-norm="171.6"><td>Спорыхина</td>...</tr>
-    <tr class="night-row" data-norm="171.6"><td><b>Аникиев</b></td>...</tr>
-    <tr class="night-row" data-norm="171.6"><td>Салашинская</td>...</tr>
-    <tr class="night-row" data-norm="171.6"><td>Юдина</td>...</tr>
+    <tr class="night-row" data-norm="171.6"><td>Сухова</td>
+    <td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable weekend"></td><td class="empty editable holiday"></td>
+    <td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable holiday"></td><td class="empty editable weekend"></td><td class="empty editable holiday"></td>
+    <td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable weekend"></td><td class="empty editable holiday"></td>
+    <td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable weekend"></td><td class="empty editable holiday"></td>
+    <td class="empty editable"></td><td class="empty editable"></td>
+    <td class="shifts-col">0</td><td class="hours-col">0.0</td><td class="remainder-col positive">+171.6</td></tr>
+    <tr class="night-row" data-norm="171.6"><td>Чупрова</td>
+    <td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable weekend"></td><td class="empty editable holiday"></td>
+    <td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable holiday"></td><td class="empty editable weekend"></td><td class="empty editable holiday"></td>
+    <td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable weekend"></td><td class="empty editable holiday"></td>
+    <td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable weekend"></td><td class="empty editable holiday"></td>
+    <td class="empty editable"></td><td class="empty editable"></td>
+    <td class="shifts-col">0</td><td class="hours-col">0.0</td><td class="remainder-col positive">+171.6</td></tr>
+    <tr class="night-row" data-norm="171.6"><td>Быкова</td>
+    <td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable weekend"></td><td class="empty editable holiday"></td>
+    <td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable holiday"></td><td class="empty editable weekend"></td><td class="empty editable holiday"></td>
+    <td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable weekend"></td><td class="empty editable holiday"></td>
+    <td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable weekend"></td><td class="empty editable holiday"></td>
+    <td class="empty editable"></td><td class="empty editable"></td>
+    <td class="shifts-col">0</td><td class="hours-col">0.0</td><td class="remainder-col positive">+171.6</td></tr>
+    <tr class="night-row" data-norm="171.6"><td>Гомбоева</td>
+    <td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable weekend"></td><td class="empty editable holiday"></td>
+    <td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable holiday"></td><td class="empty editable weekend"></td><td class="empty editable holiday"></td>
+    <td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable weekend"></td><td class="empty editable holiday"></td>
+    <td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable weekend"></td><td class="empty editable holiday"></td>
+    <td class="empty editable"></td><td class="empty editable"></td>
+    <td class="shifts-col">0</td><td class="hours-col">0.0</td><td class="remainder-col positive">+171.6</td></tr>
+    <tr class="night-row" data-norm="128.7"><td>Зюкова 0.75</td>
+    <td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable weekend"></td><td class="empty editable holiday"></td>
+    <td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable holiday"></td><td class="empty editable weekend"></td><td class="empty editable holiday"></td>
+    <td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable weekend"></td><td class="empty editable holiday"></td>
+    <td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable weekend"></td><td class="empty editable holiday"></td>
+    <td class="empty editable"></td><td class="empty editable"></td>
+    <td class="shifts-col">0</td><td class="hours-col">0.0</td><td class="remainder-col positive">+128.7</td></tr>
+    <tr class="night-row" data-norm="171.6"><td>Ефимова</td>
+    <td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable weekend"></td><td class="empty editable holiday"></td>
+    <td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable holiday"></td><td class="empty editable weekend"></td><td class="empty editable holiday"></td>
+    <td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable weekend"></td><td class="empty editable holiday"></td>
+    <td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable weekend"></td><td class="empty editable holiday"></td>
+    <td class="empty editable"></td><td class="empty editable"></td>
+    <td class="shifts-col">0</td><td class="hours-col">0.0</td><td class="remainder-col positive">+171.6</td></tr>
+    <tr class="night-row" data-norm="171.6"><td>Гайсин</td>
+    <td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable weekend"></td><td class="empty editable holiday"></td>
+    <td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable holiday"></td><td class="empty editable weekend"></td><td class="empty editable holiday"></td>
+    <td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable weekend"></td><td class="empty editable holiday"></td>
+    <td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable weekend"></td><td class="empty editable holiday"></td>
+    <td class="empty editable"></td><td class="empty editable"></td>
+    <td class="shifts-col">0</td><td class="hours-col">0.0</td><td class="remainder-col positive">+171.6</td></tr>
+    <tr class="night-row" data-norm="171.6"><td>Конькова</td>
+    <td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable weekend"></td><td class="empty editable holiday"></td>
+    <td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable holiday"></td><td class="empty editable weekend"></td><td class="empty editable holiday"></td>
+    <td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable weekend"></td><td class="empty editable holiday"></td>
+    <td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable weekend"></td><td class="empty editable holiday"></td>
+    <td class="empty editable"></td><td class="empty editable"></td>
+    <td class="shifts-col">0</td><td class="hours-col">0.0</td><td class="remainder-col positive">+171.6</td></tr>
+    <tr class="night-row" data-norm="171.6"><td>Голубева</td>
+    <td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable weekend"></td><td class="empty editable holiday"></td>
+    <td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable holiday"></td><td class="empty editable weekend"></td><td class="empty editable holiday"></td>
+    <td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable weekend"></td><td class="empty editable holiday"></td>
+    <td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable weekend"></td><td class="empty editable holiday"></td>
+    <td class="empty editable"></td><td class="empty editable"></td>
+    <td class="shifts-col">0</td><td class="hours-col">0.0</td><td class="remainder-col positive">+171.6</td></tr>
+    <tr class="night-row" data-norm="171.6"><td>Засыпкина</td>
+    <td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable weekend"></td><td class="empty editable holiday"></td>
+    <td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable holiday"></td><td class="empty editable weekend"></td><td class="empty editable holiday"></td>
+    <td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable weekend"></td><td class="empty editable holiday"></td>
+    <td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable weekend"></td><td class="empty editable holiday"></td>
+    <td class="empty editable"></td><td class="empty editable"></td>
+    <td class="shifts-col">0</td><td class="hours-col">0.0</td><td class="remainder-col positive">+171.6</td></tr>
+    <tr class="night-row" data-norm="171.6"><td>Сафронова</td>
+    <td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable weekend"></td><td class="empty editable holiday"></td>
+    <td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable holiday"></td><td class="empty editable weekend"></td><td class="empty editable holiday"></td>
+    <td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable weekend"></td><td class="empty editable holiday"></td>
+    <td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable weekend"></td><td class="empty editable holiday"></td>
+    <td class="empty editable"></td><td class="empty editable"></td>
+    <td class="shifts-col">0</td><td class="hours-col">0.0</td><td class="remainder-col positive">+171.6</td></tr>
+    <tr class="night-row" data-norm="171.6"><td>Спорыхина</td>
+    <td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable weekend"></td><td class="empty editable holiday"></td>
+    <td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable holiday"></td><td class="empty editable weekend"></td><td class="empty editable holiday"></td>
+    <td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable weekend"></td><td class="empty editable holiday"></td>
+    <td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable weekend"></td><td class="empty editable holiday"></td>
+    <td class="empty editable"></td><td class="empty editable"></td>
+    <td class="shifts-col">0</td><td class="hours-col">0.0</td><td class="remainder-col positive">+171.6</td></tr>
+    <tr class="night-row" data-norm="171.6"><td><b>Аникиев</b></td>
+    <td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable weekend"></td><td class="empty editable holiday"></td>
+    <td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable holiday"></td><td class="empty editable weekend"></td><td class="empty editable holiday"></td>
+    <td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable weekend"></td><td class="empty editable holiday"></td>
+    <td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable weekend"></td><td class="empty editable holiday"></td>
+    <td class="empty editable"></td><td class="empty editable"></td>
+    <td class="shifts-col">0</td><td class="hours-col">0.0</td><td class="remainder-col positive">+171.6</td></tr>
+    <tr class="night-row" data-norm="171.6"><td>Салашинская</td>
+    <td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable weekend"></td><td class="empty editable holiday"></td>
+    <td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable holiday"></td><td class="empty editable weekend"></td><td class="empty editable holiday"></td>
+    <td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable weekend"></td><td class="empty editable holiday"></td>
+    <td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable weekend"></td><td class="empty editable holiday"></td>
+    <td class="empty editable"></td><td class="empty editable"></td>
+    <td class="shifts-col">0</td><td class="hours-col">0.0</td><td class="remainder-col positive">+171.6</td></tr>
+    <tr class="night-row" data-norm="171.6"><td>Юдина</td>
+    <td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable weekend"></td><td class="empty editable holiday"></td>
+    <td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable holiday"></td><td class="empty editable weekend"></td><td class="empty editable holiday"></td>
+    <td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable weekend"></td><td class="empty editable holiday"></td>
+    <td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable weekend"></td><td class="empty editable holiday"></td>
+    <td class="empty editable"></td><td class="empty editable"></td>
+    <td class="shifts-col">0</td><td class="hours-col">0.0</td><td class="remainder-col positive">+171.6</td></tr>
     <tr class="section"><td colspan="34">ДНЕВНЫЕ</td></tr>
-    <tr class="day-row" data-norm="171.6"><td>Яшина</td>...</tr>
-    <tr class="day-row" data-norm="171.6"><td>Павлов</td>...</tr>
-    <tr class="day-row" data-norm="171.6"><td>Соколова</td>...</tr>
+    <tr class="day-row" data-norm="171.6"><td>Яшина</td>
+    <td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable weekend"></td><td class="empty editable holiday"></td>
+    <td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable holiday"></td><td class="empty editable weekend"></td><td class="empty editable holiday"></td>
+    <td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable weekend"></td><td class="empty editable holiday"></td>
+    <td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable weekend"></td><td class="empty editable holiday"></td>
+    <td class="empty editable"></td><td class="empty editable"></td>
+    <td class="shifts-col">0</td><td class="hours-col">0.0</td><td class="remainder-col positive">+171.6</td></tr>
+    <tr class="day-row" data-norm="171.6"><td>Павлов</td>
+    <td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable weekend"></td><td class="empty editable holiday"></td>
+    <td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable holiday"></td><td class="empty editable weekend"></td><td class="empty editable holiday"></td>
+    <td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable weekend"></td><td class="empty editable holiday"></td>
+    <td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable weekend"></td><td class="empty editable holiday"></td>
+    <td class="empty editable"></td><td class="empty editable"></td>
+    <td class="shifts-col">0</td><td class="hours-col">0.0</td><td class="remainder-col positive">+171.6</td></tr>
+    <tr class="day-row" data-norm="171.6"><td>Соколова</td>
+    <td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable weekend"></td><td class="empty editable holiday"></td>
+    <td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable holiday"></td><td class="empty editable weekend"></td><td class="empty editable holiday"></td>
+    <td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable weekend"></td><td class="empty editable holiday"></td>
+    <td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable weekend"></td><td class="empty editable holiday"></td>
+    <td class="empty editable"></td><td class="empty editable"></td>
+    <td class="shifts-col">0</td><td class="hours-col">0.0</td><td class="remainder-col positive">+171.6</td></tr>
     <tr class="count-row"><td><b>🔢 ИТОГО</b></td>
     <td class="day-count">0</td><td class="day-count">0</td><td class="day-count">0</td><td class="day-count">0</td><td class="day-count">0</td><td class="day-count weekend">0</td><td class="day-count holiday">0</td>
     <td class="day-count">0</td><td class="day-count">0</td><td class="day-count">0</td><td class="day-count">0</td><td class="day-count holiday">0</td><td class="day-count weekend">0</td><td class="day-count holiday">0</td>
@@ -184,7 +292,7 @@ body{font-family:Arial,sans-serif;font-size:13px;background:#fff}
 
 <div class="preview-bar">
     <button class="preview-btn" onclick="openPreview()">👁️ Посмотреть предварительный график</button>
-    <span style="margin-left:15px;font-size:12px;opacity:0.9">• Автосохранение в облако каждые 10 секунд •</span>
+    <span style="margin-left:15px;font-size:12px;opacity:0.9">• Автосохранение каждое изменение •</span>
 </div>
 
 <!-- Модальные окна (те же) -->
@@ -199,63 +307,17 @@ body{font-family:Arial,sans-serif;font-size:13px;background:#fff}
 
 <script>
 // ===== НАСТРОЙКИ GOOGLE SHEETS =====
-const SHEETS_API_URL = "https://script.google.com/macros/s/AKfycbxoFUSnA4riHN0FrdGmhEMZ0SF-zoj3ZJ3bkLRrEQxsYoeXj3IkgoM_rUGCoK0T_tpiVA/exec";
+const SHEETS_API_URL = "https://script.google.com/macros/s/AKfycbzO5_B9cAuX-vp3nSNNpOrFAGOWuK3U5CUvE9bDUTddoeO7tQgmLmcuHKC7c6l6hfg-XA/exec";
 
 // ===== ГЛОБАЛЬНЫЕ ПЕРЕМЕННЫЕ =====
 let mode = 'admin', adminOK = false, emp = null, selected = null, vacMode = false, zoom = 1;
 let empData = {}, history = [], hIdx = -1, redo = [], edit = false;
-let saveTimeout = null; // для debounce
-
 const emps = ["Керножицкая","Сухова","Чупрова","Быкова","Гомбоева","Зюкова 0.75","Ефимова","Гайсин","Конькова","Голубева","Засыпкина","Сафронова","Спорыхина","Аникиев","Салашинская","Юдина","Яшина","Павлов","Соколова"];
 const productionCalendar = {
     workDays: [1,2,3,4,5,8,9,10,11,12,15,16,17,18,19,22,23,24,25,26,29,30],
     normHours: 171.6
 };
 const PRODUCTION_NORM = productionCalendar.normHours;
-
-// ===== ФУНКЦИИ РАБОТЫ С ОБЛАКОМ =====
-async function saveToCloud() {
-    if (!SHEETS_API_URL) return;
-    const data = {
-        cells: [],
-        employeeData: empData,
-        lastSave: new Date().toISOString()
-    };
-    document.querySelectorAll('.editable').forEach(c => {
-        data.cells.push({
-            h: c.dataset.h || '',
-            text: c.textContent,
-            className: c.className,
-            emp: c.dataset.emp || '',
-            adm: c.dataset.adm || '',
-            bgColor: c.dataset.bgColor || ''
-        });
-    });
-    try {
-        await fetch(SHEETS_API_URL, {
-            method: "POST",
-            mode: "cors",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(data)
-        });
-        // Не показываем уведомления при каждом автосохранении, чтобы не раздражать
-    } catch(e) {
-        console.error("Ошибка сохранения в облако:", e);
-    }
-}
-
-async function loadFromCloud() {
-    if (!SHEETS_API_URL) return null;
-    try {
-        const response = await fetch(SHEETS_API_URL, { method: "GET", mode: "cors" });
-        if (response.ok) {
-            return await response.json();
-        }
-    } catch(e) {
-        console.error("Ошибка загрузки из облака:", e);
-    }
-    return null;
-}
 
 // ===== СОХРАНЕНИЕ В LOCALSTORAGE =====
 function saveToLocal() {
@@ -319,19 +381,63 @@ function applyData(data) {
     if (emp) applyEmpMarks();
 }
 
-// ===== ФУНКЦИЯ ВЫЗОВА СОХРАНЕНИЯ С ЗАДЕРЖКОЙ =====
-function triggerSave() {
-    // Сохраняем локально сразу
-    saveToLocal();
-    // Отправляем в облако с задержкой 2 секунды, чтобы не создавать много запросов
+// ===== СОХРАНЕНИЕ В GOOGLE SHEETS =====
+let saveTimeout = null;
+function scheduleSave() {
     if (saveTimeout) clearTimeout(saveTimeout);
     saveTimeout = setTimeout(() => {
-        saveToCloud();
-        saveTimeout = null;
-    }, 2000);
+        saveToSheets();
+    }, 500);
 }
 
-// ===== ОСНОВНЫЕ ФУНКЦИИ =====
+async function saveToSheets() {
+    const cellsData = [];
+    document.querySelectorAll('.editable').forEach(c => {
+        cellsData.push({
+            h: c.dataset.h || '',
+            text: c.textContent,
+            className: c.className,
+            emp: c.dataset.emp || '',
+            adm: c.dataset.adm || '',
+            bgColor: c.dataset.bgColor || ''
+        });
+    });
+    const payload = {
+        cells: cellsData,
+        employeeData: empData,
+        lastSave: new Date().toISOString()
+    };
+    try {
+        await fetch(SHEETS_API_URL, {
+            method: "POST",
+            mode: "cors",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload)
+        });
+    } catch(e) {
+        console.error("Ошибка сохранения в Google Sheets:", e);
+    }
+}
+
+async function loadFromSheets() {
+    try {
+        const response = await fetch(SHEETS_API_URL, { method: "GET", mode: "cors" });
+        if (response.ok) {
+            const data = await response.json();
+            if (data && data.cells) {
+                applyData(data);
+                saveToLocal();
+                showToast("✅ Данные загружены из облака", "success");
+            }
+        } else {
+            console.warn("Ошибка загрузки из Google Sheets:", response.status);
+        }
+    } catch(e) {
+        console.error("Ошибка загрузки из Google Sheets:", e);
+    }
+}
+
+// ===== ВСПОМОГАТЕЛЬНЫЕ ФУНКЦИИ (все, что изменяет таблицу, вызывает scheduleSave) =====
 function fillEmpSelect(){ const s=document.getElementById('empSelect'); s.innerHTML=''; emps.forEach(n=>{ const o=document.createElement('option'); o.value=n; o.textContent=n; s.add(o); }); }
 function fillLoginEmpSelect(){ const sel=document.getElementById('loginEmpSelect'); sel.innerHTML=''; emps.forEach(name=>{ const opt=document.createElement('option'); opt.value=name; opt.textContent=name; sel.appendChild(opt); }); }
 function initializeNorms(){ document.querySelectorAll('.night-row,.day-row').forEach(row=>{ const name=row.cells[0].textContent.trim(); row.dataset.norm = name.includes('0.75') ? (PRODUCTION_NORM*0.75).toFixed(1) : PRODUCTION_NORM.toFixed(1); }); }
@@ -440,7 +546,7 @@ function applyEmpVacation(){
         const cell=row.cells[d];
         if(cell){ cell.dataset.h=''; cell.textContent='🏖'; cell.classList.add('blocked','employee-blocked','unavailable-mark'); cell.dataset.emp='1'; }
     }
-    calc(); triggerSave(); showToast(`🏖 Отпуск ${start}-${end} июня`,'success');
+    calc(); scheduleSave(); showToast(`🏖 Отпуск ${start}-${end} июня`,'success');
 }
 function empCantWork(){
     if(!emp||!selected){showToast('❌ Выберите ячейку','error');return;}
@@ -459,7 +565,7 @@ function empCantWork(){
         selected.textContent=''; selected.dataset.h=''; delete selected.dataset.emp;
         showToast(`✓ ${day} июня — снято`,'success');
     }
-    calc(); triggerSave();
+    calc(); scheduleSave();
 }
 function clearEmpMarks(){
     if(!emp){showToast('⚠️ Выберите сотрудника','error');return;}
@@ -472,7 +578,7 @@ function clearEmpMarks(){
             if(c&&c.dataset.emp){ c.classList.remove('blocked','employee-blocked','unavailable-mark'); delete c.dataset.emp; c.dataset.h=''; c.textContent=''; }
         } break;
     }
-    calc(); triggerSave(); showToast('🔄 Сброшено','success');
+    calc(); scheduleSave(); showToast('🔄 Сброшено','success');
 }
 function applyEmpMarks(){
     if(!emp)return;
@@ -489,7 +595,7 @@ function applyEmpMarks(){
 function setEdit(on){ document.querySelectorAll('.editable').forEach(c=>c.contentEditable=on&&mode==='admin'&&adminOK); }
 function toggleEdit(){ if(mode!=='admin'||!adminOK)return; edit=!edit; setEdit(edit); document.getElementById('status').textContent=edit?'✏️ ПРАВКА (двойной клик = 23)':'✅ АДМИН'; }
 function toggleVacation(){ if(mode!=='admin'||!adminOK)return; vacMode=!vacMode; document.getElementById('status').textContent=vacMode?'🏖 Протяните ячейки':'✅ АДМИН'; }
-function quickSet(v){ if(!selected||mode!=='admin'||!adminOK)return; addHist('Ввод: '+(v||'пусто')); setCell(selected,v); calc(); triggerSave(); }
+function quickSet(v){ if(!selected||mode!=='admin'||!adminOK)return; addHist('Ввод: '+(v||'пусто')); setCell(selected,v); calc(); scheduleSave(); }
 function setVac(days){
     if(!selected||mode!=='admin'||!adminOK)return;
     addHist('Отпуск: '+days+'д');
@@ -498,7 +604,7 @@ function setVac(days){
         const c=row.cells[i];
         if(c&&i>0){ c.dataset.h=''; c.textContent='—'; c.classList.add('blocked'); c.dataset.adm='1'; c.classList.remove('employee-blocked'); delete c.dataset.emp; }
     }
-    calc(); triggerSave();
+    calc(); scheduleSave();
 }
 function setCell(c, v) {
     const cls = (c.classList.contains('weekend') ? ' weekend' : '') + (c.classList.contains('holiday') ? ' holiday' : '');
@@ -518,7 +624,7 @@ function setColor(color){
     addHist('Смена цвета');
     if(color){ selected.style.backgroundColor=color; selected.dataset.bgColor=color; }
     else { selected.style.backgroundColor=''; delete selected.dataset.bgColor; }
-    calc(); triggerSave();
+    calc(); scheduleSave();
 }
 function calc(){
     const totalRow=document.querySelector('.count-row');
@@ -554,7 +660,7 @@ function addHist(act){
     const st=[]; document.querySelectorAll('.editable').forEach(c=>{ st.push({h:c.dataset.h||'',t:c.textContent,c:c.className,e:c.dataset.emp,a:c.dataset.adm,bg:c.dataset.bgColor||''}); });
     history=history.slice(0,hIdx+1); history.push({st,act,time:new Date().toLocaleTimeString()}); hIdx++; redo=[];
 }
-function undo(){ if(hIdx<=0)return; const cur=history[hIdx]; redo.push(cur); hIdx--; restore(history[hIdx].st); triggerSave(); }
+function undo(){ if(hIdx<=0)return; const cur=history[hIdx]; redo.push(cur); hIdx--; restore(history[hIdx].st); scheduleSave(); }
 function restore(st){
     const cs=document.querySelectorAll('.editable');
     st.forEach((x,i)=>{
@@ -567,7 +673,7 @@ function restore(st){
     }); calc();
 }
 
-// Обработчики событий
+// Обработчики событий (вызывают scheduleSave)
 document.getElementById('tbl').addEventListener('dblclick', e => {
     const c = e.target.closest('.editable'); if (!c) return; e.preventDefault(); e.stopPropagation();
     if (mode === 'admin' && adminOK) {
@@ -575,7 +681,7 @@ document.getElementById('tbl').addEventListener('dblclick', e => {
         const day = Array.from(row.children).indexOf(c); if (day < 1 || day > 30) return;
         if (c.dataset.h === '23') { addHist('Двойной клик (админ): очистка'); setCell(c, ''); }
         else { addHist('Двойной клик (админ): 23'); setCell(c, '23'); }
-        calc(); triggerSave();
+        calc(); scheduleSave();
     } else if (mode === 'employee' && emp) {
         const row = c.closest('tr'); if (row.cells[0].textContent.trim() !== emp) { showToast('❌ Это не ваша ячейка', 'error'); return; }
         const day = Array.from(row.children).indexOf(c); if (day < 1 || day > 30) return;
@@ -590,10 +696,10 @@ document.getElementById('tbl').addEventListener('click',e=>{
     const row=c.closest('tr'); if(row&&row.cells[0]){ emp=row.cells[0].textContent.trim(); document.getElementById('status').textContent=`✅ Выбран: ${emp}`; }
     if(mode==='admin'&&adminOK&&edit){
         const row=c.closest('tr'); if(row.classList.contains('night-row')){
-            const day=Array.from(row.children).indexOf(c); if(day>=1&&day<=30&&!c.textContent){ addHist('Авто: 23'); setCell(c,'23'); calc(); triggerSave(); }
+            const day=Array.from(row.children).indexOf(c); if(day>=1&&day<=30&&!c.textContent){ addHist('Авто: 23'); setCell(c,'23'); calc(); scheduleSave(); }
         }
     }
-    if(vacMode&&mode==='admin'&&adminOK&&c.classList.contains('blocked')){ addHist('Отпуск снят'); setCell(c,'23'); delete c.dataset.adm; calc(); triggerSave(); }
+    if(vacMode&&mode==='admin'&&adminOK&&c.classList.contains('blocked')){ addHist('Отпуск снят'); setCell(c,'23'); delete c.dataset.adm; calc(); scheduleSave(); }
 });
 
 let dragS=null,dragging=false;
@@ -601,7 +707,7 @@ document.querySelectorAll('.editable').forEach(c=>{
     c.addEventListener('mousedown',e=>{ if(vacMode&&mode==='admin'&&adminOK){ e.preventDefault(); dragging=true; dragS=c; addHist('Отпуск: старт'); } });
     c.addEventListener('mouseover',()=>{ if(!dragging||!dragS||mode!=='admin')return; const row=dragS.parentElement; if(c.parentElement!==row)return; const sc=Array.from(row.children).indexOf(dragS), ec=Array.from(row.children).indexOf(c); const mn=Math.min(sc,ec),mx=Math.max(sc,ec); for(let i=mn;i<=mx&&i<=30;i++){ if(i===0)continue; const x=row.cells[i]; if(x){ x.dataset.h=''; x.textContent='—'; x.classList.add('blocked'); x.dataset.adm='1'; x.classList.remove('employee-blocked'); delete x.dataset.emp; } } });
 });
-document.addEventListener('mouseup',()=>{ if(dragging){dragging=false;dragS=null;calc();triggerSave();} });
+document.addEventListener('mouseup',()=>{ if(dragging){dragging=false;dragS=null;calc();scheduleSave();} });
 
 function zoomIn(){zoom=Math.min(zoom+0.1,2);applyZoom();}
 function zoomOut(){zoom=Math.max(zoom-0.1,0.5);applyZoom();}
@@ -666,7 +772,7 @@ function importData(input){
             if(data.employeeData) empData = data.employeeData;
             calc();
             if(emp) applyEmpMarks();
-            triggerSave();
+            scheduleSave();
             showToast('📥 Импорт выполнен', 'success');
         } catch(err){
             showToast('❌ Ошибка импорта', 'error');
@@ -687,8 +793,8 @@ function closePreview(){ document.getElementById('previewModal').style.display='
 function exportToPDF(){
     showToast('📄 Подготовка...','info'); try{
         const pw=window.open('','_blank'); let html=`<!DOCTYPE html><html><head><meta charset="UTF-8"><title>График</title><style>body{font-family:Arial,sans-serif;margin:20px;font-size:11px}h1{text-align:center;font-size:18pt}table{border-collapse:collapse;width:100%;font-size:10px}th{background:#1e3c72;color:#fff;padding:4px 2px;border:1px solid #000}td{border:1px solid #000;padding:2px 1px;text-align:center}.night{background:#C6EFCE}.day{background:#BDD7EE}.short{background:#FFEB9C}.holiday{background:#FFC7CE}.weekend{background:#D9D9D9}.total-row{background:#FFD966;font-weight:bold}</style></head><body><h1>📊 ГРАФИК — ИЮНЬ 2026</h1>`;
-        html+='<table><thead><tr><th>Сотрудник</th>';
-        for(let d=1;d<=30;d++)html+='<th>'+d+'</th>'; html+='<th>Смен</th><th>Часы</th><th>Ост.</th></tr></thead><tbody>';
+        html+='<table border="1"><thead>32<th>Сотрудник</th>';
+        for(let d=1;d<=30;d++)html+='<th>'+d+'</th>'; html+='<th>Смен</th><th>Часы</th><th>Ост.</th>32</thead><tbody>';
         document.querySelectorAll('.night-row,.day-row').forEach(row=>{ html+='<tr><td style="font-weight:bold;text-align:left">'+row.cells[0].textContent+'</td>'; for(let i=1;i<=30;i++){const c=row.cells[i];let cls='';if(c){if(c.classList.contains('night'))cls='night';else if(c.classList.contains('day'))cls='day';else if(c.classList.contains('short'))cls='short';html+='<td class="'+cls+'">'+(c.dataset.h||'')+'</td>';}else html+='<td></td>';} html+='<td>'+row.cells[31].textContent+'</td><td>'+row.cells[32].textContent+'</td><td>'+row.cells[33].textContent+'</td></tr>'; });
         const tr=document.querySelector('.count-row'); if(tr){html+='<tr class="total-row"><td><b>ИТОГО</b></td>';for(let i=1;i<=30;i++)html+='<td>'+(tr.cells[i]?.textContent||'0')+'</td>';html+='<td>'+tr.cells[31].textContent+'</td><td>'+tr.cells[32].textContent+'</td><td>'+tr.cells[33].textContent+'</td></tr>';}
         html+='</tbody></table><p>Дата: '+new Date().toLocaleString()+'</p></body></html>'; pw.document.write(html);pw.document.close(); setTimeout(()=>{pw.print();showToast('✅ В печати выберите "Сохранить как PDF"','success');},500);
@@ -708,14 +814,14 @@ function fillSelectedEmployeeWorkDays(){
     document.querySelectorAll('.night-row,.day-row').forEach(row=>{ if(row.cells[0].textContent.trim()===emp)targetRow=row; });
     if(!targetRow){showToast('❌ Сотрудник не найден','error');return;}
     workDays.forEach(day=>{ const cell=targetRow.cells[day]; if(cell&&!cell.dataset.h&&!cell.classList.contains('employee-blocked'))setCell(cell,'7.8'); });
-    calc(); triggerSave(); showToast(`✅ Заполнено для ${emp}`,'success');
+    calc(); scheduleSave(); showToast(`✅ Заполнено для ${emp}`,'success');
 }
 function fillWorkDays(){
     if(mode!=='admin'||!adminOK){showToast('❌ Только для админа','error');return;}
     if(!confirm('Заполнить рабочие дни (7.8ч) для ВСЕХ?'))return;
     addHist('Автозаполнение для всех');
     productionCalendar.workDays.forEach(day=>{ document.querySelectorAll('.night-row,.day-row').forEach(row=>{ const cell=row.cells[day]; if(cell&&!cell.dataset.h&&!cell.classList.contains('employee-blocked'))setCell(cell,'7.8'); }); });
-    calc(); triggerSave(); showToast('✅ Заполнено для всех','success');
+    calc(); scheduleSave(); showToast('✅ Заполнено для всех','success');
 }
 function fillAdminEmpSelect(){ const sel=document.getElementById('adminVacEmpSelect'); sel.innerHTML=''; emps.forEach(name=>{ const opt=document.createElement('option'); opt.value=name; opt.textContent=name; sel.appendChild(opt); }); }
 function openAdminVacation(){ if(!adminOK||mode!=='admin'){showToast('❌ Только для админа','error');return;} fillAdminEmpSelect(); document.getElementById('adminVacStart').value=1; document.getElementById('adminVacEnd').value=14; document.getElementById('adminVacationModal').style.display='flex'; }
@@ -727,7 +833,7 @@ function applyAdminVacation(){
     if(!row){showToast('❌ Сотрудник не найден','error');return;}
     addHist(`Отпуск для ${empName} ${start}-${end}`);
     for(let d=start;d<=end;d++){ const cell=row.cells[d]; if(cell){ cell.dataset.h=''; cell.textContent='отпуск'; cell.classList.add('blocked','employee-blocked','unavailable-mark'); cell.dataset.adm='1'; delete cell.dataset.emp; } }
-    calc(); triggerSave(); showToast(`🏖 Отпуск для ${empName}`,'success');
+    calc(); scheduleSave(); showToast(`🏖 Отпуск для ${empName}`,'success');
 }
 function exportCSV(){
     let csv='Сотрудник;'; for(let d=1;d<=30;d++)csv+=d+';'; csv+='Смен;Часы;Ост.\n';
@@ -738,33 +844,19 @@ function resetData(){ if(confirm('🔄 Сбросить ВСЁ?')){ localStorage
 function showToast(msg,type='info',dur=2000){ const t=document.getElementById('toast'); t.textContent=msg; t.className='toast '+(type==='error'?'error':'success')+' show'; setTimeout(()=>t.classList.remove('show'),dur); }
 
 // Инициализация
-window.onload = async function() {
+window.onload = function() {
     fillEmpSelect();
     fillLoginEmpSelect();
     initializeNorms();
-    // Сначала загружаем локальные данные
     const local = loadFromLocal();
     if (local) {
         applyData(local);
     } else {
         calc();
     }
-    // Затем загружаем из облака (если есть более свежая версия)
-    const remote = await loadFromCloud();
-    if (remote && remote.cells) {
-        const localTime = local ? new Date(local.lastSave || 0) : 0;
-        const remoteTime = new Date(remote.lastSave || 0);
-        if (remoteTime > localTime) {
-            applyData(remote);
-            saveToLocal();
-            showToast("☁️ Загружена свежая версия из облака", "success");
-        }
-    }
+    loadFromSheets(); // автоматически подгружаем из облака
     document.getElementById('loginModal').style.display = 'flex';
-    // Автосохранение в облако каждые 30 секунд (на случай, если debounce не сработал)
-    setInterval(() => {
-        saveToCloud();
-    }, 30000);
+    setInterval(() => { scheduleSave(); }, 10000);
 };
 </script>
 </body>
