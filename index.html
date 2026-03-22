@@ -1,341 +1,467 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>График — Июнь 2026 ☁️</title>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-<style>
-/* (весь ваш CSS без изменений — он уже хорош) */
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:Arial,sans-serif;font-size:13px;background:#fff}
-.header{background:linear-gradient(135deg,#1F4E78,#2E5C8A);color:#fff;padding:15px;text-align:center;position:sticky;top:0;z-index:300;font-size:18px;box-shadow:0 4px 8px rgba(0,0,0,0.2)}
-.header h1{font-size:20pt;margin:0;white-space:nowrap;text-shadow:2px 2px 4px rgba(0,0,0,0.3)}
-.toolbar{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;padding:8px;background:#f8f9fa;border-bottom:2px solid #ddd}
-.btn{padding:8px 14px;border:2px solid #000;font-weight:bold;cursor:pointer;border-radius:6px;font-size:12px;background:#4472C4;color:#fff}.btn:hover{background:#355a9a}
-.btn-vacation{background:#E91E63}.btn-save{background:#217346}.btn-danger{background:#C00000}.btn-info{background:#17a2b8}
-.btn-admin{background:#9C27B0}.btn-employee{background:#009688}
-.zoom-controls{display:flex;gap:4px;align-items:center;background:#fff;padding:6px 10px;border:2px solid #000;border-radius:6px}
-.zoom-btn{width:34px;height:34px;padding:0;font-size:20px;font-weight:bold;background:#607D8B;color:#fff;border:2px solid #000;border-radius:4px;cursor:pointer}.zoom-btn:hover{background:#455A64}
-.zoom-val{min-width:55px;text-align:center;font-weight:bold;font-size:12px}
-.color-picker{display:flex;gap:3px;margin-left:5px;align-items:center}
-.color-btn{width:26px;height:26px;border:2px solid #000;border-radius:3px;cursor:pointer;padding:0}.color-btn:hover{transform:scale(1.15)}
-.mode-panel{background:#fff;padding:12px;margin:5px;border:2px solid #000;border-radius:8px;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:center;font-size:13px}
-.mode-panel label{font-weight:bold;margin-right:3px}
-.mode-panel select{padding:8px;border:2px solid #000;border-radius:6px;font-size:13px}
-.status-bar{background:linear-gradient(135deg,#4472C4,#5A8FD4);color:#fff;padding:12px;text-align:center;font-weight:bold;font-size:13px}
-.table-container{width:99vw;height:85vh;overflow:auto;background:#fff;margin:3px;border:2px solid #000;border-radius:4px;position:relative}
-.excel-table{border-collapse:collapse;font-size:12px;width:100%;table-layout:fixed;min-width:1020px;transform-origin:top left}
-.excel-table th,.excel-table td{border:1px solid #000;padding:2px 1px;text-align:center;width:32px;height:38px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.excel-table thead th:first-child,.excel-table tbody td:first-child{position:sticky;left:0;background:#fff;min-width:115px;width:115px;text-align:left;padding:4px 6px;z-index:150;border-right:2px solid #000;font-weight:normal;font-size:12px}
-.excel-table thead th:first-child{background:#F3F3F3;font-weight:bold;z-index:200}
-.excel-table th.shifts-col,.excel-table td.shifts-col{position:sticky;right:75px;background:#92D050;z-index:100;font-weight:bold;border-left:2px solid #000;width:52px}
-.excel-table th.hours-col,.excel-table td.hours-col{position:sticky;right:42px;background:#DEEBF7;z-index:100;font-weight:bold;border-left:2px solid #000;width:58px}
-.excel-table th.remainder-col,.excel-table td.remainder-col{position:sticky;right:0;background:#FFD966;z-index:100;font-weight:bold;border-left:2px solid #000;width:62px}
-.excel-table thead th{position:sticky;top:0;background:#F3F3F3;font-weight:bold;z-index:120;border-bottom:2px solid #000;font-size:11px;height:48px}
-.holiday{background:#FFC7CE;font-weight:bold}.weekend{background:#D9D9D9}
-.night{background:#C6EFCE;font-weight:bold;color:#006100}.day{background:#BDD7EE;font-weight:bold;color:#003366}
-.short{background:#FFEB9C;font-weight:bold;color:#664D00}
-.blocked{background:#A5A5A5;color:#fff;font-weight:bold}
-.employee-blocked{background:#FFB6C1!important;border:2px dashed #E91E63;color:#000!important;font-weight:bold}
-.editable{cursor:pointer}.editable:hover{background:#E8F4FD}.editable.selected{background:#FFD700!important;box-shadow:inset 0 0 0 2px #000}
-.count-row{background:#FFD966;font-weight:bold}
-.section{background:#4472C4;color:#fff;font-weight:bold}
-.positive{color:#006100;font-weight:bold}.negative{color:#9C0006;font-weight:bold}
-.quick-actions{display:flex;gap:6px;justify-content:center;padding:8px;background:#f8f9fa;border-top:2px solid #ddd;flex-wrap:wrap;font-size:12px}
-.quick-btn{padding:8px 12px;background:#fff;border:2px solid #000;border-radius:6px;font-size:12px;cursor:pointer;font-weight:bold}.quick-btn:active{background:#4472C4;color:#fff}
-.employee-controls{background:#E8F5E9;padding:12px;margin:5px;border:2px solid #009688;border-radius:8px;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:center;font-size:13px}
-.toast{position:fixed;bottom:15px;right:15px;background:#333;color:#fff;padding:12px 18px;border-radius:8px;z-index:1000;opacity:0;transition:0.3s;max-width:320px;font-size:13px}
-.toast.show{opacity:1}.toast.success{background:#217346}.toast.error{background:#C00000}
-.modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.6);z-index:600;justify-content:center;align-items:center}
-.modal-content{background:#fff;padding:20px;border-radius:8px;border:3px solid #000;max-width:400px;width:90%}
-.modal-content h3{margin:0 0 15px;color:#1F4E78}
-.modal-content label{display:block;margin:10px 0 5px;font-weight:bold}
-.modal-content input,.modal-content select{width:100%;padding:8px;border:2px solid #000;border-radius:4px;font-size:14px}
-.modal-buttons{display:flex;gap:10px;justify-content:flex-end;margin-top:15px}
-.preview-bar{position:fixed;bottom:0;left:0;right:0;background:linear-gradient(135deg,#2E5C8A,#1F4E78);color:#fff;padding:10px;text-align:center;z-index:400;box-shadow:0 -2px 8px rgba(0,0,0,0.2)}
-.preview-btn{background:#FFD700;color:#000;border:2px solid #000;padding:10px 25px;font-size:13px;font-weight:bold;border-radius:6px;cursor:pointer;margin:0 10px}.preview-btn:hover{background:#FFC107}
-@media (max-width:1024px){.excel-table th,.excel-table td{min-width:34px;font-size:11px}.excel-table tbody td:first-child{min-width:115px}.toolbar{gap:3px}.btn,.quick-btn{padding:6px 10px;font-size:11px}.header h1{font-size:18pt}.preview-bar{padding:8px}.preview-btn{padding:8px 20px;font-size:12px}}
-@media (max-width:768px){.mode-panel{flex-direction:column;align-items:stretch}.toolbar{flex-wrap:wrap;justify-content:flex-start}.btn,.quick-btn{flex:1 0 auto;margin:3px}.color-picker{order:1;width:100%;justify-content:center}.zoom-controls{order:2;width:100%;justify-content:center}.excel-table{min-width:1000px}.table-container{height:75vh}.header h1{font-size:16pt}.preview-bar{position:relative;bottom:auto;left:auto;right:auto}}
-@media print{.toolbar,.mode-panel,.quick-actions,.status-bar,.toast,.modal,.employee-controls,.color-picker,.zoom-controls,.preview-bar{display:none!important}.table-container{height:auto;overflow:visible;border:none;margin:0}.excel-table{font-size:10px;transform:none!important}.excel-table th,.excel-table td{width:30px;height:32px;padding:1px}.excel-table tbody td:first-child{position:static;min-width:80px}.shifts-col,.hours-col,.remainder-col{position:static;background:#fff!important}}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>📊 График работы — Июнь 2026 (Локальное сохранение + Экспорт/Импорт)</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+        body{font-family:'Roboto',sans-serif;font-size:13px;background:#f5f5f5;color:#333;min-height:100vh;display:flex;flex-direction:column}
+        .login-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.8);z-index:1000;display:flex;justify-content:center;align-items:center}
+        .login-box{background:#fff;padding:25px;border-radius:10px;width:90%;max-width:380px;text-align:center;box-shadow:0 10px 40px rgba(0,0,0,0.3)}
+        .login-box h2{color:#1F4E78;margin-bottom:15px;font-size:20px}
+        .login-box p{color:#666;margin-bottom:20px;font-size:13px}
+        .role-btn{display:block;width:100%;padding:12px;margin:8px 0;border:none;border-radius:6px;font-size:15px;font-weight:bold;cursor:pointer;transition:0.2s}
+        .role-admin{background:linear-gradient(135deg,#9C27B0,#7B1FA2);color:#fff}
+        .role-employee{background:linear-gradient(135deg,#009688,#00796B);color:#fff}
+        .role-btn:hover{transform:scale(1.02);box-shadow:0 5px 15px rgba(0,0,0,0.2)}
+        .login-box input{width:100%;padding:10px;border:1px solid #ddd;border-radius:5px;font-size:14px;margin:8px 0;text-align:center}
+        .login-box input:focus{border-color:#1F4E78;outline:none}
+        .hidden{display:none!important}
+        .header{background:linear-gradient(135deg,#1F4E78,#2E5C8A);color:#fff;padding:10px 15px;text-align:center;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,0.2)}
+        .header h1{font-size:16px;margin:0;white-space:nowrap}
+        .toolbar{display:flex;gap:5px;justify-content:center;flex-wrap:wrap;padding:6px;background:#fff;border-bottom:1px solid #ccc}
+        .btn{padding:8px 12px;border:1px solid #000;font-weight:bold;cursor:pointer;border-radius:5px;font-size:12px;background:#4472C4;color:#fff;transition:0.2s}
+        .btn:hover{background:#355a9a}.btn:active{transform:scale(0.95)}
+        .btn-vacation{background:#E91E63}.btn-save{background:#217346}.btn-danger{background:#C00000}.btn-info{background:#17a2b8}.btn-secondary{background:#757575}
+        .btn.active{background:#C00000!important}
+        .zoom-controls{display:flex;gap:3px;align-items:center;background:#fff;padding:5px 8px;border:1px solid #000;border-radius:5px}
+        .zoom-btn{width:32px;height:32px;padding:0;font-size:16px;font-weight:bold;background:#607D8B;color:#fff;border:1px solid #000;border-radius:3px;cursor:pointer}
+        .zoom-btn:hover{background:#455A64}
+        .zoom-val{min-width:45px;text-align:center;font-weight:bold;font-size:11px}
+        .color-picker{display:flex;gap:3px;align-items:center;flex-wrap:wrap}
+        .color-btn{width:28px;height:28px;border:1px solid #000;border-radius:3px;cursor:pointer;padding:0;transition:0.2s}
+        .color-btn:hover{transform:scale(1.1)}.color-btn.active{border:2px solid #000;box-shadow:0 0 0 1px #FFD700}
+        .mode-panel{background:#fff;padding:8px;margin:5px;border:1px solid #000;border-radius:6px;display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:center;font-size:12px}
+        .emp-info{background:#E8F5E9;padding:6px 12px;border:1px solid #009688;border-radius:5px;font-weight:bold;color:#00796B;font-size:12px}
+        .table-container{width:100%;flex:1;overflow:auto;background:#fff;border-top:1px solid #ccc;position:relative;-webkit-overflow-scrolling:touch}
+        .table-wrapper{min-width:1100px;padding:8px}
+        .excel-table{border-collapse:collapse;font-size:12px;width:100%;table-layout:fixed}
+        .excel-table th,.excel-table td{border:1px solid #aaa;padding:0;text-align:center}
+        .excel-table th:first-child,.excel-table td:first-child{min-width:110px;max-width:110px;position:sticky;left:0;background:#fff;z-index:50;border-right:1px solid #000}
+        .excel-table th:first-child{background:#F3F3F3;font-weight:bold;height:40px;z-index:60}
+        .excel-table td:first-child{text-align:left;padding:0 6px;font-weight:500}
+        .excel-table th.day-col{min-width:32px;max-width:32px;height:40px}
+        .excel-table td.day-cell{min-width:32px;max-width:32px;height:36px}
+        .excel-table th.shifts-col,.excel-table td.shifts-col{min-width:45px;max-width:45px;position:sticky;right:80px;background:#92D050;z-index:40;font-weight:bold}
+        .excel-table th.hours-col,.excel-table td.hours-col{min-width:55px;max-width:55px;position:sticky;right:45px;background:#DEEBF7;z-index:40;font-weight:bold}
+        .excel-table th.remainder-col,.excel-table td.remainder-col{min-width:60px;max-width:60px;position:sticky;right:0;background:#FFD966;z-index:40;font-weight:bold}
+        .excel-table thead th{position:sticky;top:0;background:#F3F3F3;font-weight:bold;z-index:30;font-size:10px}
+        .excel-table thead th small{display:block;font-size:8px;color:#666;font-weight:normal}
+        .cell{width:100%;height:100%;min-height:36px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:11px;font-weight:500;transition:0.1s}
+        .cell:hover{background:#E8F4FD}
+        .cell.selected{box-shadow:inset 0 0 0 2px #000;z-index:10;background:#FFD700!important}
+        .holiday{background:#FFC7CE!important;color:#9C0006;font-weight:bold}
+        .weekend{background:#D9D9D9!important}
+        .night{background:#C6EFCE!important;color:#006100;font-weight:bold}
+        .day{background:#BDD7EE!important;color:#003366;font-weight:bold}
+        .short{background:#FFEB9C!important;color:#664D00;font-weight:bold}
+        .blocked{background:#A5A5A5!important;color:#fff;font-weight:bold}
+        .vacation{background:#FFB6C1!important;border:2px dashed #E91E63!important;color:#831843!important;font-weight:bold}
+        .section-row td{background:#4472C4;color:#fff;font-weight:bold;text-transform:uppercase;font-size:11px}
+        .count-row{background:#FFD966!important;font-weight:bold}
+        .positive{color:#006100;font-weight:bold}.negative{color:#9C0006;font-weight:bold}
+        .quick-actions{display:flex;gap:5px;justify-content:center;padding:6px;background:#fff;border-top:1px solid #ccc;flex-wrap:wrap}
+        .quick-btn{padding:8px 12px;background:#fff;border:1px solid #000;border-radius:5px;font-size:11px;cursor:pointer;font-weight:bold;transition:0.2s}
+        .quick-btn:active{background:#4472C4;color:#fff;transform:scale(0.95)}
+        .employee-controls{background:#E8F5E9;padding:8px;margin:5px;border:1px solid #009688;border-radius:6px;display:flex;flex-wrap:wrap;gap:6px;align-items:center;justify-content:center;font-size:11px}
+        .status-bar{background:linear-gradient(135deg,#4472C4,#5A8FD4);color:#fff;padding:8px;text-align:center;font-weight:bold;font-size:11px;border-top:1px solid #000}
+        .modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:500;justify-content:center;align-items:center}
+        .modal.active{display:flex}
+        .modal-content{background:#fff;padding:20px;border-radius:8px;border:2px solid #000;max-width:380px;width:90%;max-height:90vh;overflow:auto}
+        .modal-content h3{margin:0 0 12px;color:#1F4E78;font-size:18px}
+        .modal-content label{display:block;margin:10px 0 4px;font-weight:bold;font-size:12px}
+        .modal-content input,.modal-content select{width:100%;padding:8px;border:1px solid #000;border-radius:4px;font-size:13px}
+        .modal-buttons{display:flex;gap:8px;justify-content:flex-end;margin-top:15px}
+        .toast{position:fixed;bottom:15px;left:50%;transform:translateX(-50%) translateY(100px);background:#333;color:#fff;padding:10px 20px;border-radius:25px;z-index:1000;opacity:0;transition:0.3s;max-width:90%;font-size:12px;font-weight:bold;box-shadow:0 3px 10px rgba(0,0,0,0.3)}
+        .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+        .toast.success{background:#217346}.toast.error{background:#C00000}.toast.info{background:#17a2b8}
+        .preview-bar{position:sticky;bottom:0;left:0;right:0;background:linear-gradient(135deg,#2E5C8A,#1F4E78);color:#fff;padding:8px;text-align:center;z-index:90;box-shadow:0 -2px 8px rgba(0,0,0,0.2);border-top:1px solid #000;display:flex;justify-content:center;align-items:center;gap:10px;flex-wrap:wrap}
+        .preview-btn{background:#FFD700;color:#000;border:1px solid #000;padding:8px 20px;font-size:11px;font-weight:bold;border-radius:5px;cursor:pointer}
+        .preview-btn:hover{background:#FFC107}
+        .preview-info{font-size:10px;opacity:0.9}
+        @media(max-width:768px){
+            .excel-table th,.excel-table td{font-size:10px}
+            .excel-table td:first-child{min-width:90px;max-width:90px;font-size:11px}
+            .excel-table th.day-col,.excel-table td.day-cell{min-width:28px;max-width:28px}
+            .toolbar{gap:3px;padding:5px}
+            .btn,.quick-btn{padding:6px 8px;font-size:10px}
+            .header h1{font-size:14px}
+            .zoom-controls{order:2;width:100%;justify-content:center;margin-top:3px}
+            .color-picker{order:1;width:100%;justify-content:center;margin-bottom:3px}
+            .mode-panel{flex-direction:column;align-items:stretch}
+            .quick-actions{gap:3px}
+            .quick-btn{flex:1;min-width:50px}
+            .preview-bar{flex-direction:column;gap:5px}
+        }
+        @media print{
+            .toolbar,.mode-panel,.quick-actions,.status-bar,.toast,.modal,.employee-controls,.color-picker,.zoom-controls,.preview-bar,.login-overlay{display:none!important}
+            .table-container{height:auto;overflow:visible;border:none}
+            .excel-table{font-size:9px;transform:none!important}
+        }
+    </style>
 </head>
 <body>
 
-<div class="sync-status" style="position:fixed;top:10px;right:10px;background:#fff;border:2px solid #000;border-radius:6px;padding:6px 12px;font-size:11px;z-index:500;display:flex;align-items:center;gap:6px">
-    <div class="sync-dot" id="syncDot" style="width:10px;height:10px;border-radius:50%;background:#ccc"></div>
-    <span id="syncText">☁️ Загрузка...</span>
+<div class="login-overlay" id="loginOverlay">
+    <div class="login-box">
+        <h2>📅 График работы</h2>
+        <p>Июнь 2026 • Выберите роль</p>
+        <button class="role-btn role-admin" onclick="showAdminLogin()">👨‍💼 Администратор</button>
+        <button class="role-btn role-employee" onclick="showEmployeeLogin()">👤 Сотрудник</button>
+    </div>
 </div>
 
-<div class="header"><h1>📊 ГРАФИК — ИЮНЬ 2026 ☁️</h1></div>
+<div class="login-overlay hidden" id="adminLoginOverlay">
+    <div class="login-box">
+        <h2>🔐 Вход администратора</h2>
+        <input type="password" id="adminPassword" placeholder="Пароль" onkeypress="if(event.key==='Enter')checkAdmin()">
+        <button class="role-btn role-admin" onclick="checkAdmin()">Войти</button>
+        <button class="role-btn btn-secondary" onclick="backToLogin()">← Назад</button>
+    </div>
+</div>
+
+<div class="login-overlay hidden" id="employeeLoginOverlay">
+    <div class="login-box">
+        <h2>👤 Выберите сотрудника</h2>
+        <select id="empSelectLogin"></select>
+        <button class="role-btn role-employee" onclick="employeeLogin()">Войти</button>
+        <button class="role-btn btn-secondary" onclick="backToLogin()">← Назад</button>
+    </div>
+</div>
+
+<div class="header"><h1>📊 ГРАФИК — ИЮНЬ 2026 (ЛОКАЛЬНОЕ СОХРАНЕНИЕ + ФАЙЛ)</h1></div>
 
 <div class="mode-panel">
-<div><label>🔐</label><select id="modeSelect"><option value="admin">Админ</option><option value="employee">Сотрудник</option></select></div>
-<div id="adminDiv"><button class="btn btn-admin" id="enableAdminBtn">🔓 Админ</button></div>
-<div id="empDiv" style="display:none"><label>👤</label><select id="empSelect"></select><button class="btn btn-employee" id="selectEmployeeBtn">Выбрать</button></div>
+    <div id="adminModePanel">
+        <span style="font-weight:bold;color:#9C27B0">👨‍💼 Администратор</span>
+        <button class="btn btn-employee" onclick="logout()">🚪 Выход</button>
+    </div>
+    <div id="empModePanel" class="hidden">
+        <span class="emp-info">👤 <span id="currentEmpName">не выбран</span></span>
+        <button class="btn btn-employee" onclick="logout()">🚪 Выход</button>
+    </div>
 </div>
 
 <div class="toolbar" id="adminToolbar">
-<button class="btn" id="toggleEditBtn">✏️</button>
-<button class="btn btn-vacation" id="toggleVacationBtn">🏖</button>
-<button class="btn" id="undoBtn">↩️</button>
-<button class="btn btn-save" id="saveBtn">💾</button>
-<button class="btn" id="exportCSVBtn">📄 CSV</button>
-<button class="btn btn-danger" id="exportPDFBtn">📕 PDF</button>
-<button class="btn btn-info" id="screenshotBtn">📸 Фото</button>
-<button class="btn" id="resetDataBtn">🔄 Сброс</button>
-<button class="quick-btn" id="fillAllWorkDaysBtn">📅 7.8ч всем</button>
-<button class="quick-btn" id="fillSelectedWorkDaysBtn">👤 7.8ч выбранному</button>
-<div class="zoom-controls">
-<button class="zoom-btn" id="zoomInBtn">➕</button>
-<span class="zoom-val" id="zoomVal">100%</span>
-<button class="zoom-btn" id="zoomOutBtn">➖</button>
-<button class="btn" id="zoomResetBtn">1:1</button>
-</div>
-<div class="color-picker">
-<button class="color-btn" style="background:#FFC7CE" data-color="#FFC7CE" title="Праздник"></button>
-<button class="color-btn" style="background:#D9D9D9" data-color="#D9D9D9" title="Выходной"></button>
-<button class="color-btn" style="background:#C6EFCE" data-color="#C6EFCE" title="Ночь"></button>
-<button class="color-btn" style="background:#BDD7EE" data-color="#BDD7EE" title="День"></button>
-<button class="color-btn" style="background:#FFEB9C" data-color="#FFEB9C" title="Короткий"></button>
-<button class="color-btn" style="background:#A5A5A5" data-color="#A5A5A5" title="Блок"></button>
-<button class="color-btn" style="background:#fff" data-color="" title="Сброс">↺</button>
-</div>
+    <button class="btn" id="toggleEditBtn" onclick="toggleEdit()">✏️ Правка</button>
+    <button class="btn btn-vacation" onclick="openVacationModal()">🏖 Отпуск</button>
+    <button class="btn" onclick="undo()">↩️</button>
+    <button class="btn btn-save" onclick="forceSave()">💾 Сохранить</button>
+    <button class="btn" onclick="exportData()">📤 Экспорт (JSON)</button>
+    <button class="btn" onclick="importData()">📥 Импорт (JSON)</button>
+    <button class="btn" onclick="exportCSV()">📄 CSV</button>
+    <button class="btn btn-danger" onclick="exportPDF()">📕 Печать</button>
+    <button class="btn btn-info" onclick="takeScreenshot()">📸</button>
+    <button class="btn btn-secondary" onclick="resetData()">🔄 Сброс</button>
+    <div class="zoom-controls">
+        <button class="zoom-btn" onclick="zoomIn()">+</button>
+        <span class="zoom-val" id="zoomVal">100%</span>
+        <button class="zoom-btn" onclick="zoomOut()">-</button>
+    </div>
+    <div class="color-picker">
+        <button class="color-btn" style="background:#FFC7CE" data-color="holiday"></button>
+        <button class="color-btn" style="background:#D9D9D9" data-color="weekend"></button>
+        <button class="color-btn" style="background:#C6EFCE" data-color="night"></button>
+        <button class="color-btn" style="background:#BDD7EE" data-color="day"></button>
+        <button class="color-btn" style="background:#FFEB9C" data-color="short"></button>
+        <button class="color-btn" style="background:#A5A5A5" data-color="blocked"></button>
+        <button class="color-btn" style="background:#FFB6C1" data-color="vacation"></button>
+        <button class="color-btn" style="background:#fff" data-color=""></button>
+    </div>
 </div>
 
 <div class="quick-actions" id="adminQuick">
-<button class="quick-btn" data-val="23">23ч</button>
-<button class="quick-btn" data-val="7.8">7.8ч</button>
-<button class="quick-btn" data-val="10">10ч</button>
-<button class="quick-btn" data-val="11">11ч</button>
-<button class="quick-btn" data-val="">✕</button>
-<button class="quick-btn" data-vac="14">14д</button>
-<button class="quick-btn" data-vac="28">28д</button>
-<button class="quick-btn" style="background:#E91E63;color:white" id="openAdminVacBtn">🏖 Отпуск (админ)</button>
+    <button class="quick-btn" data-val="23">23ч</button>
+    <button class="quick-btn" data-val="12">12ч</button>
+    <button class="quick-btn" data-val="11">11ч</button>
+    <button class="quick-btn" data-val="10">10ч</button>
+    <button class="quick-btn" data-val="7.8">7.8ч</button>
+    <button class="quick-btn" data-val="6">6ч</button>
+    <button class="quick-btn" data-val="">✕</button>
+    <button class="quick-btn" id="fillAllWorkDaysBtn">📅 7.8ч</button>
 </div>
 
-<div class="employee-controls" id="empControls">
-<span style="font-weight:bold;font-size:14px">👤 <span id="empName">не выбран</span></span>
-<button class="quick-btn" style="background:#E91E63;color:white" id="openEmpVacBtn">🏖 Отпуск</button>
-<button class="quick-btn" style="background:#FF9800;color:white" id="empCantWorkBtn">🚫 Не могу</button>
-<button class="quick-btn" id="clearEmpMarksBtn">✓ Сброс</button>
-<button class="quick-btn" style="background:#607D8B;color:white" id="logoutBtn">🚪 Выход</button>
+<div class="employee-controls hidden" id="empControls">
+    <button class="btn btn-vacation" onclick="openEmpVacationModal()">🏖 Отпуск</button>
+    <button class="quick-btn" style="background:#FF9800;color:#fff" id="empCantWorkBtn">🚫 Не могу</button>
+    <button class="quick-btn" id="clearEmpMarksBtn">✓ Сброс</button>
 </div>
 
-<div class="status-bar" id="status">✅ Норма: 171.6ч • ☁️ Автосинхронизация включена</div>
+<div class="status-bar">✅ Норма: 171.6ч • 💾 Автосохранение каждые 5 сек</div>
 
-<div class="table-container" id="tblContainer">
-<table class="excel-table" id="tbl">
-<thead>
-<tr>
-<th>Сотрудник</th>
-<th>1<br>Пн</th><th>2<br>Вт</th><th>3<br>Ср</th><th>4<br>Чт</th><th>5<br>Пт</th>
-<th class="weekend">6<br>Сб</th><th class="holiday">7<br>Вс</th>
-<th>8<br>Пн</th><th>9<br>Вт</th><th>10<br>Ср</th><th>11<br>Чт</th><th>12<br>Пт</th>
-<th class="weekend">13<br>Сб</th><th class="holiday">14<br>Вс</th>
-<th>15<br>Пн</th><th>16<br>Вт</th><th>17<br>Ср</th><th>18<br>Чт</th><th>19<br>Пт</th>
-<th class="weekend">20<br>Сб</th><th class="holiday">21<br>Вс</th>
-<th>22<br>Пн</th><th>23<br>Вт</th><th>24<br>Ср</th><th>25<br>Чт</th><th>26<br>Пт</th>
-<th class="weekend">27<br>Сб</th><th class="holiday">28<br>Вс</th>
-<th>29<br>Пн</th><th>30<br>Вт</th>
-<th class="shifts-col">Смен</th><th class="hours-col">Часы</th><th class="remainder-col">Ост.</th>
-</tr>
-</thead>
-<tbody>
-<tr class="section"><td colspan="34">СУТОЧНЫЕ</td></tr>
-<tr class="night-row" data-norm="171.6"><td>Керножицкая</td>
-<td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable weekend"></td><td class="empty editable holiday"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable holiday"></td><td class="empty editable weekend"></td><td class="empty editable holiday"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable weekend"></td><td class="empty editable holiday"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable"></td><td class="empty editable weekend"></td><td class="empty editable holiday"></td><td class="empty editable"></td><td class="empty editable"></td>
-<td class="shifts-col">0</td><td class="hours-col">0.0</td><td class="remainder-col positive">+171.6</td></tr>
-<!-- Остальные строки (Сухова, Чупрова, ...) полностью аналогичны предыдущей версии – для краткости оставлю ту же структуру, но в финальном коде они будут все. Поскольку полный HTML слишком длинный, я продолжу в финальном ответе давать ссылку на готовый файл, но здесь укажу, что код полностью идентичен предыдущему, только заменена логика синхронизации. -->
-
-</tbody>
-</table>
+<div class="table-container">
+    <div class="table-wrapper">
+        <table class="excel-table" id="tbl">
+            <thead>
+                <tr>
+                    <th>Сотрудник</th>
+                    <th class="day-col">1<small>Пн</small></th>
+                    <th class="day-col">2<small>Вт</small></th>
+                    <th class="day-col">3<small>Ср</small></th>
+                    <th class="day-col">4<small>Чт</small></th>
+                    <th class="day-col">5<small>Пт</small></th>
+                    <th class="day-col weekend">6<small>Сб</small></th>
+                    <th class="day-col holiday">7<small>Вс</small></th>
+                    <th class="day-col">8<small>Пн</small></th>
+                    <th class="day-col">9<small>Вт</small></th>
+                    <th class="day-col">10<small>Ср</small></th>
+                    <th class="day-col">11<small>Чт</small></th>
+                    <th class="day-col">12<small>Пт</small></th>
+                    <th class="day-col weekend">13<small>Сб</small></th>
+                    <th class="day-col holiday">14<small>Вс</small></th>
+                    <th class="day-col">15<small>Пн</small></th>
+                    <th class="day-col">16<small>Вт</small></th>
+                    <th class="day-col">17<small>Ср</small></th>
+                    <th class="day-col">18<small>Чт</small></th>
+                    <th class="day-col">19<small>Пт</small></th>
+                    <th class="day-col weekend">20<small>Сб</small></th>
+                    <th class="day-col holiday">21<small>Вс</small></th>
+                    <th class="day-col">22<small>Пн</small></th>
+                    <th class="day-col">23<small>Вт</small></th>
+                    <th class="day-col">24<small>Ср</small></th>
+                    <th class="day-col">25<small>Чт</small></th>
+                    <th class="day-col">26<small>Пт</small></th>
+                    <th class="day-col weekend">27<small>Сб</small></th>
+                    <th class="day-col holiday">28<small>Вс</small></th>
+                    <th class="day-col">29<small>Пн</small></th>
+                    <th class="day-col">30<small>Вт</small></th>
+                    <th class="shifts-col">Смен</th>
+                    <th class="hours-col">Часы</th>
+                    <th class="remainder-col">Ост.</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody"></tbody>
+        </table>
+    </div>
 </div>
 
 <div class="preview-bar">
-<button class="preview-btn" id="previewBtn">👁️ Посмотреть предварительный график</button>
-<span style="margin-left:15px;font-size:12px;opacity:0.9">• ☁️ Автосинхронизация каждые 10 сек •</span>
+    <button class="preview-btn" onclick="openPreview()">👁️ Просмотр</button>
+    <span class="preview-info">💾 Сохранено: <span id="lastSaveTime">--:--</span></span>
 </div>
 
-<!-- Модальные окна (такие же как были) -->
-<div id="previewModal" class="modal"><div class="modal-content" style="max-width:800px"><h3>👁️ Предварительный просмотр</h3><div style="max-height:60vh;overflow:auto;border:2px solid #000"><table class="excel-table" id="previewTable"></table></div><div class="modal-buttons"><button class="btn" id="closePreviewBtn">Закрыть</button></div></div></div>
-<div id="empVacationModal" class="modal"><div class="modal-content"><h3>🏖 Отпуск</h3><p><strong>Сотрудник:</strong> <span id="modalEmpName"></span></p><label>Начало: <input type="number" id="empVacStart" min="1" max="30" value="1"></label><label>Конец: <input type="number" id="empVacEnd" min="1" max="30" value="14"></label><div class="modal-buttons"><button class="btn" id="closeEmpVacBtn">Отмена</button><button class="btn btn-vacation" id="applyEmpVacBtn">Применить</button></div></div></div>
-<div id="adminVacationModal" class="modal"><div class="modal-content"><h3>🏖 Отпуск (админ)</h3><label>Сотрудник:</label><select id="adminVacEmpSelect"></select><label>Начало: <input type="number" id="adminVacStart" min="1" max="30" value="1"></label><label>Конец: <input type="number" id="adminVacEnd" min="1" max="30" value="14"></label><div class="modal-buttons"><button class="btn" id="closeAdminVacBtn">Отмена</button><button class="btn btn-vacation" id="applyAdminVacBtn">Применить</button></div></div></div>
-<div id="loginModal" class="modal"><div class="modal-content"><h2>🔐 Вход в график</h2><div style="display:flex;gap:15px;justify-content:center;"><button class="btn" id="showAdminLoginBtn" style="background:#9C27B0">Администратор</button><button class="btn" id="showEmployeeLoginBtn" style="background:#009688">Сотрудник</button></div></div></div>
-<div id="employeeLoginModal" class="modal"><div class="modal-content"><h3>👤 Выберите сотрудника</h3><select id="loginEmpSelect"></select><div class="modal-buttons"><button class="btn" id="closeEmployeeLoginBtn">Отмена</button><button class="btn btn-employee" id="loginAsEmployeeBtn">Войти</button></div></div></div>
-<div id="adminLoginModal" class="modal"><div class="modal-content"><h3>🔐 Вход администратора</h3><input type="password" id="adminPasswordInput" placeholder="Пароль"><div class="modal-buttons"><button class="btn" id="closeAdminLoginBtn">Отмена</button><button class="btn btn-admin" id="checkAdminLoginBtn">Войти</button></div></div></div>
+<div class="modal" id="previewModal">
+    <div class="modal-content" style="max-width:700px">
+        <h3>👁️ Просмотр</h3>
+        <div style="max-height:50vh;overflow:auto;border:1px solid #000;margin:10px 0">
+            <table class="excel-table" id="previewTable"></table>
+        </div>
+        <div class="modal-buttons">
+            <button class="btn" onclick="closeModal('previewModal')">Закрыть</button>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="vacationModal">
+    <div class="modal-content">
+        <h3>🏖 Оформить отпуск</h3>
+        <label>📋 Сотрудник:</label>
+        <select id="vacEmpSelect"></select>
+        <label>📅 Начало (день 1-30):</label>
+        <input type="number" id="vacStart" min="1" max="30" value="1">
+        <label>📅 Конец (день 1-30):</label>
+        <input type="number" id="vacEnd" min="1" max="30" value="14">
+        <div class="modal-buttons">
+            <button class="btn" onclick="closeModal('vacationModal')">Отмена</button>
+            <button class="btn btn-vacation" onclick="applyVacation()">✅ Применить отпуск</button>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="empVacationModal">
+    <div class="modal-content">
+        <h3>🏖 Мой отпуск</h3>
+        <p style="color:#666;margin-bottom:10px;font-size:12px"><strong>Сотрудник:</strong> <span id="modalEmpName"></span></p>
+        <label>📅 Начало (день 1-30):</label>
+        <input type="number" id="empVacStart" min="1" max="30" value="1">
+        <label>📅 Конец (день 1-30):</label>
+        <input type="number" id="empVacEnd" min="1" max="30" value="14">
+        <div class="modal-buttons">
+            <button class="btn" onclick="closeModal('empVacationModal')">Отмена</button>
+            <button class="btn btn-vacation" onclick="applyEmpVacation()">✅ Применить отпуск</button>
+        </div>
+    </div>
+</div>
+
 <div class="toast" id="toast"></div>
 
 <script>
-// ===== НАСТРОЙКИ JSONBIN (ЗАМЕНИТЕ НА СВОИ!) =====
-const JSONBIN_API_KEY = "$2a$10$AJZ4ntehz0kxDzWhVoIJz.ouEFPJWRtWE8vxkhgyNGUZT2PRj9p2m"; // ваш ключ
-const JSONBIN_ID = "69bef911b7ec241ddc8d3f91"; // ваш ID бина
-const JSONBIN_URL = `https://api.jsonbin.io/v3/b/${JSONBIN_ID}`;
+const EMPLOYEES = ["Керножицкая","Сухова","Чупрова","Быкова","Гомбоева","Зюкова 0.75","Ефимова","Гайсин","Конькова","Голубева","Засыпкина","Сафронова","Спорыхина","Аникиев","Салашинская","Юдина","Яшина","Павлов","Соколова"];
+const WORK_DAYS = [1,2,3,4,5,8,9,10,11,12,15,16,17,18,19,22,23,24,25,26,29,30];
+const WEEKENDS = [6,7,13,14,20,21,27,28];
+const HOLIDAYS = [7,14,21,28];
+const NORM_HOURS = 171.6;
 
-// ===== ГЛОБАЛЬНЫЕ =====
-let mode = 'admin';
-let adminOK = false;
-let emp = null;
-let selected = null;
-let vacMode = false;
-let zoom = 1;
-let empData = {};
-let history = [];
-let hIdx = -1;
-let edit = false;
-const emps = ["Керножицкая","Сухова","Чупрова","Быкова","Гомбоева","Зюкова 0.75","Ефимова","Гайсин","Конькова","Голубева","Засыпкина","Сафронова","Спорыхина","Аникиев","Салашинская","Юдина","Яшина","Павлов","Соколова"];
-const productionCalendar = { workDays: [1,2,3,4,5,8,9,10,11,12,15,16,17,18,19,22,23,24,25,26,29,30], normHours: 171.6 };
-const PRODUCTION_NORM = productionCalendar.normHours;
+// 🔑 КЛЮЧ localStorage
+const STORAGE_KEY = 'work_schedule_final_v5';
+const STORAGE_TIME_KEY = 'work_schedule_time_v5';
 
-// ===== ФУНКЦИИ РАБОТЫ С ДАННЫМИ (calc, setCell, и т.д.) =====
-// (они такие же как в предыдущей версии, поэтому здесь не дублирую — в финальном файле они будут полностью)
-// Для краткости ответа я предоставлю ссылку на полный код.
+let mode = null, currentEmp = null, currentEmpIndex = -1, selectedCell = null, editMode = false, zoom = 1, history = [], historyIdx = -1;
 
-// ===== НОВАЯ ЛОГИКА СИНХРОНИЗАЦИИ =====
-let saveTimeout = null;
-let isSyncing = false;
-
-function updateSyncStatus(status, text) {
-    const dot = document.getElementById('syncDot');
-    const txt = document.getElementById('syncText');
-    if (status === 'syncing') dot.style.background = '#FFA500';
-    else if (status === 'synced') dot.style.background = '#217346';
-    else if (status === 'error') dot.style.background = '#C00000';
-    txt.textContent = text;
-}
-
-// Сохранение ВСЕГО состояния в localStorage и в облако (если возможно)
-function saveFullStateToLocalStorage() {
-    const cellsData = [];
-    document.querySelectorAll('.editable').forEach(c => {
-        cellsData.push({
-            h: c.dataset.h || '',
-            text: c.textContent,
-            className: c.className,
-            emp: c.dataset.emp || '',
-            adm: c.dataset.adm || '',
-            bgColor: c.dataset.bgColor || '',
-        });
-    });
-    const state = {
-        cells: cellsData,
-        employeeData: empData,
-        history: history,
-        hIdx: hIdx,
-        adminOK: adminOK ? '1' : '0',
-        edit: edit ? '1' : '0',
-        zoom: zoom,
-        lastSave: new Date().toISOString()
-    };
-    localStorage.setItem('grafik_cloud', JSON.stringify(state));
-    return state;
-}
-
-function scheduleSave() {
-    if (saveTimeout) clearTimeout(saveTimeout);
-    saveTimeout = setTimeout(() => {
-        const state = saveFullStateToLocalStorage();
-        syncToCloud(state);
-    }, 1000);
-}
-
-async function syncToCloud(state) {
-    if (isSyncing) return;
-    isSyncing = true;
-    updateSyncStatus('syncing', 'Синхронизация...');
-    try {
-        await fetch(JSONBIN_URL, {
-            method: "PUT",
-            headers: {
-                "Content-Type": "application/json",
-                "X-Master-Key": JSONBIN_API_KEY
-            },
-            body: JSON.stringify(state)
-        });
-        updateSyncStatus('synced', '☁️ Синхронизировано');
-        setTimeout(() => updateSyncStatus('synced', '☁️ Синхронизация активна'), 2000);
-    } catch (e) {
-        console.error("Ошибка сохранения в облако:", e);
-        updateSyncStatus('error', '⚠️ Офлайн, данные в браузере');
-    }
-    isSyncing = false;
-}
-
-async function loadFromCloudAndMerge() {
-    updateSyncStatus('syncing', 'Загрузка...');
-    let cloudState = null;
-    try {
-        const resp = await fetch(JSONBIN_URL, { headers: { "X-Master-Key": JSONBIN_API_KEY } });
-        if (resp.ok) {
-            const data = await resp.json();
-            cloudState = data.record;
-        }
-    } catch (e) {
-        console.error("Ошибка загрузки из облака:", e);
-    }
-    // Всегда загружаем локальное состояние (оно самое свежее)
-    const localRaw = localStorage.getItem('grafik_cloud');
-    let localState = null;
-    if (localRaw) localState = JSON.parse(localRaw);
-    // Если есть облако и нет локального — берём облако
-    if (cloudState && !localState) {
-        applyData(cloudState);
-        showToast("✅ Загружено из облака", "success");
-    } 
-    // Если есть локальное — всегда применяем его (оно новее)
-    else if (localState) {
-        applyData(localState);
-        showToast("📱 Загружено из браузера", "success");
-        // дополнительно попробуем отправить локальное в облако, если оно там устарело
-        if (cloudState && JSON.stringify(cloudState.lastSave) !== JSON.stringify(localState.lastSave)) {
-            syncToCloud(localState);
-        }
-    } else if (cloudState) {
-        applyData(cloudState);
-        showToast("✅ Загружено из облака", "success");
-    } else {
-        showToast("ℹ️ Новый график, данные пусты", "info");
-    }
-    updateSyncStatus('synced', '☁️ Синхронизация активна');
-}
-
-function applyData(data) {
-    if (!data || !data.cells) return;
-    const cells = document.querySelectorAll('.editable');
-    data.cells.forEach((cd, i) => {
-        if (cells[i]) {
-            const c = cells[i];
-            c.dataset.h = cd.h || '';
-            c.textContent = cd.text || '';
-            c.className = cd.className || 'editable';
-            if (cd.bgColor) { c.style.backgroundColor = cd.bgColor; c.dataset.bgColor = cd.bgColor; }
-            if (cd.emp === '1') { c.dataset.emp = '1'; c.classList.add('employee-blocked'); }
-            if (cd.adm === '1') c.dataset.adm = '1';
-        }
-    });
-    if (data.employeeData) empData = data.employeeData;
-    if (data.history) history = data.history;
-    if (data.hIdx) hIdx = data.hIdx;
-    if (data.adminOK) adminOK = data.adminOK === '1';
-    if (data.edit) edit = data.edit === '1';
-    if (data.zoom) zoom = data.zoom;
-    calc();
-    if (emp) applyEmpMarks();
-}
-
-// Все остальные функции (calc, setCell, undo, restore и т.д.) полностью совпадают с предыдущей рабочей версией.
-// В финальном файле они будут присутствовать.
-
-// Инициализация
+// ============================================
+// 🚀 ЗАПУСК
+// ============================================
 window.onload = function() {
-    fillEmpSelect();
-    initializeNorms();
-    loadFromCloudAndMerge();
-    calc();
-    initEventListeners();
-    openLoginModal();
-    setInterval(() => scheduleSave(), 10000);
+    console.log('🚀 Запуск графика...');
+    initTable();
+    fillSelects();
+    setupColorPicker();
+    setupQuickButtons();
+    setTimeout(function() { loadData(); }, 300);
+    updateLastSaveTime();
+    setInterval(function() { if(mode) saveData(false); }, 5000);
 };
+
+// ============================================
+// 📊 ТАБЛИЦА
+// ============================================
+function initTable() {
+    var tbody = document.getElementById('tableBody');
+    tbody.innerHTML = '<tr class="section-row"><td colspan="34">☀️ СУТОЧНЫЕ</td></tr>';
+    for(var i = 0; i < EMPLOYEES.length; i++) {
+        var emp = EMPLOYEES[i];
+        var row = '<tr data-emp="' + i + '" data-norm="' + NORM_HOURS + '"><td>' + emp + '</td>';
+        for(var day = 1; day <= 30; day++) {
+            var baseClass = 'cell';
+            if(WEEKENDS.indexOf(day) >= 0) baseClass += ' weekend';
+            if(HOLIDAYS.indexOf(day) >= 0) baseClass += ' holiday';
+            row += '<td class="day-cell"><div class="' + baseClass + '" data-row="' + i + '" data-day="' + day + '" onclick="handleCellClick(this,event)" ondblclick="handleCellDblClick(this,event)"></div></td>';
+        }
+        row += '<td class="shifts-col">0</td><td class="hours-col">0.0</td><td class="remainder-col positive">+' + NORM_HOURS + '</td></tr>';
+        tbody.innerHTML += row;
+    }
+    var totalRow = '<tr class="count-row"><td><b>🔢 ИТОГО</b></td>';
+    for(var d = 1; d <= 30; d++) totalRow += '<td class="day-count">0</td>';
+    totalRow += '<td class="shifts-col">0</td><td class="hours-col">0.0</td><td class="remainder-col positive">+0</td></tr>';
+    tbody.innerHTML += totalRow;
+}
+
+function fillSelects() {
+    var empSelectLogin = document.getElementById('empSelectLogin');
+    var vacEmpSelect = document.getElementById('vacEmpSelect');
+    empSelectLogin.innerHTML = '<option value="" disabled selected>Выберите сотрудника</option>';
+    vacEmpSelect.innerHTML = '';
+    for(var i = 0; i < EMPLOYEES.length; i++) {
+        empSelectLogin.innerHTML += '<option value="' + i + '">' + EMPLOYEES[i] + '</option>';
+        vacEmpSelect.innerHTML += '<option value="' + i + '">' + EMPLOYEES[i] + '</option>';
+    }
+}
+
+// ============================================
+// 🔐 ВХОД / ВЫХОД
+// ============================================
+function showAdminLogin() { document.getElementById('loginOverlay').classList.add('hidden'); document.getElementById('adminLoginOverlay').classList.remove('hidden'); }
+function showEmployeeLogin() { document.getElementById('loginOverlay').classList.add('hidden'); document.getElementById('employeeLoginOverlay').classList.remove('hidden'); }
+function backToLogin() { document.getElementById('adminLoginOverlay').classList.add('hidden'); document.getElementById('employeeLoginOverlay').classList.add('hidden'); document.getElementById('loginOverlay').classList.remove('hidden'); }
+function checkAdmin() { var pwd = document.getElementById('adminPassword').value; if(pwd === 'admin123') { mode='admin'; currentEmp=null; document.getElementById('adminLoginOverlay').classList.add('hidden'); document.getElementById('adminModePanel').classList.remove('hidden'); document.getElementById('empModePanel').classList.add('hidden'); document.getElementById('adminToolbar').style.display='flex'; document.getElementById('adminQuick').style.display='flex'; document.getElementById('empControls').classList.add('hidden'); editMode=true; updateEditBtn(); showToast('✅ Вход администратора','success'); updateVisibility(); saveData(true); } else { showToast('❌ Неверный пароль','error'); } }
+function employeeLogin() { var idx = document.getElementById('empSelectLogin').value; if(!idx) { showToast('❌ Выберите сотрудника','error'); return; } mode='employee'; currentEmpIndex=parseInt(idx); currentEmp=EMPLOYEES[currentEmpIndex]; document.getElementById('employeeLoginOverlay').classList.add('hidden'); document.getElementById('adminModePanel').classList.add('hidden'); document.getElementById('empModePanel').classList.remove('hidden'); document.getElementById('currentEmpName').textContent=currentEmp; document.getElementById('adminToolbar').style.display='none'; document.getElementById('adminQuick').style.display='none'; document.getElementById('empControls').classList.remove('hidden'); editMode=true; showToast('✅ Вход: '+currentEmp,'success'); updateVisibility(); saveData(true); }
+function logout() { mode=null; currentEmp=null; currentEmpIndex=-1; editMode=false; document.getElementById('adminModePanel').classList.add('hidden'); document.getElementById('empModePanel').classList.add('hidden'); document.getElementById('loginOverlay').classList.remove('hidden'); document.getElementById('adminPassword').value=''; document.getElementById('empSelectLogin').value=''; updateVisibility(); showToast('🚪 Выход','info'); }
+function updateVisibility() { var rows = document.querySelectorAll('#tableBody tr[data-emp]'); for(var i=0;i<rows.length;i++) { var idx=parseInt(rows[i].dataset.emp); rows[i].style.display=(mode==='employee' && idx!==currentEmpIndex)?'none':''; } }
+
+// ============================================
+// 🖱️ КЛИКИ И ПРАВКА
+// ============================================
+function handleCellClick(cell,event) { event.stopPropagation(); event.preventDefault(); var row=parseInt(cell.dataset.row); if(mode==='employee' && row!==currentEmpIndex) { showToast('❌ Только своя строка','error'); return; } if(!editMode) { showToast('✏️ Включите правку','info'); return; } var selected=document.querySelectorAll('.cell.selected'); for(var i=0;i<selected.length;i++) selected[i].classList.remove('selected'); selectedCell=cell; cell.classList.add('selected'); if(mode==='admin' && editMode) { var activeColor=document.querySelector('.color-btn.active'); if(activeColor) { applyColorToCell(cell,activeColor.dataset.color); saveHistory(); calc(); saveData(false); } } }
+function handleCellDblClick(cell,event) { event.stopPropagation(); event.preventDefault(); var row=parseInt(cell.dataset.row); if(mode==='employee') { if(row!==currentEmpIndex) { showToast('❌ Не ваша строка','error'); return; } saveHistory(); if(cell.classList.contains('blocked')) { cell.classList.remove('blocked'); cell.textContent=''; var day=parseInt(cell.dataset.day); if(WEEKENDS.indexOf(day)>=0) cell.classList.add('weekend'); if(HOLIDAYS.indexOf(day)>=0) cell.classList.add('holiday'); } else { cell.classList.remove('night','day','short','vacation','weekend','holiday'); cell.classList.add('blocked'); cell.textContent='X'; } calc(); saveData(false); showToast('🚫 Статус изменён','info'); return; } if(mode==='admin' && editMode) { saveHistory(); if(cell.textContent==='23') { cell.textContent=''; cell.classList.remove('night','day','short','blocked','vacation'); var day=parseInt(cell.dataset.day); if(WEEKENDS.indexOf(day)>=0) cell.classList.add('weekend'); if(HOLIDAYS.indexOf(day)>=0) cell.classList.add('holiday'); } else { cell.textContent='23'; cell.classList.remove('day','short','blocked','vacation','weekend','holiday'); cell.classList.add('night'); } calc(); saveData(false); showToast('⏱ 23ч установлено','success'); } }
+function applyColorToCell(cell,colorClass) { var text=cell.textContent; cell.classList.remove('night','day','short','blocked','vacation','weekend','holiday'); if(colorClass) { cell.classList.add(colorClass); if(colorClass==='night') cell.textContent=text||'Н'; else if(colorClass==='day') cell.textContent=text||'Д'; else if(colorClass==='short') cell.textContent=text||'К'; else if(colorClass==='blocked') cell.textContent='X'; else if(colorClass==='vacation') cell.textContent='О'; else cell.textContent=text; } else { cell.textContent=''; var day=parseInt(cell.dataset.day); if(WEEKENDS.indexOf(day)>=0) cell.classList.add('weekend'); if(HOLIDAYS.indexOf(day)>=0) cell.classList.add('holiday'); } }
+function setupColorPicker() { var buttons=document.querySelectorAll('.color-btn'); for(var i=0;i<buttons.length;i++) { buttons[i].addEventListener('click',function(e){ e.stopPropagation(); var allBtns=document.querySelectorAll('.color-btn'); for(var j=0;j<allBtns.length;j++) allBtns[j].classList.remove('active'); this.classList.add('active'); if(selectedCell && mode==='admin' && editMode) { applyColorToCell(selectedCell,this.dataset.color); saveHistory(); calc(); saveData(false); } }); } document.querySelector('.color-btn[data-color="day"]').classList.add('active'); }
+function setupQuickButtons() { var valBtns=document.querySelectorAll('.quick-btn[data-val]'); for(var i=0;i<valBtns.length;i++) { valBtns[i].addEventListener('click',function(e){ e.stopPropagation(); if(!editMode) { showToast('✏️ Включите правку','info'); return; } if(mode!=='admin') { showToast('❌ Только админ','error'); return; } var val=this.dataset.val; if(selectedCell) { saveHistory(); selectedCell.textContent=val; selectedCell.classList.remove('night','day','short','blocked','vacation','weekend','holiday'); if(val==='') { var day=parseInt(selectedCell.dataset.day); if(WEEKENDS.indexOf(day)>=0) selectedCell.classList.add('weekend'); if(HOLIDAYS.indexOf(day)>=0) selectedCell.classList.add('holiday'); } else { var numVal=parseFloat(val); if(numVal>=11) selectedCell.classList.add('night'); else if(numVal>=7) selectedCell.classList.add('day'); else selectedCell.classList.add('short'); } calc(); saveData(false); showToast('⏱ '+(val||'пусто'),'success'); } else { showToast('👆 Выберите ячейку','info'); } }); } }
+
+// ============================================
+// 🧮 ПОДСЧЁТ
+// ============================================
+function calc() { var rows=document.querySelectorAll('#tableBody tr[data-emp]'); var shiftsByDay=[]; var hoursByDay=[]; for(var i=0;i<31;i++) { shiftsByDay[i]=0; hoursByDay[i]=0; } var totalShiftsAll=0,totalHoursAll=0,totalNormAll=0; for(var r=0;r<rows.length;r++) { var cells=rows[r].querySelectorAll('.cell'); var shifts=0,hours=0; for(var c=0;c<cells.length;c++) { var day=c+1; var val=cells[c].textContent.trim(); if(val && ['О','X','Н','Д','К'].indexOf(val)===-1) { var h=parseFloat(val); if(!isNaN(h)) { hours+=h; shifts++; shiftsByDay[day]++; hoursByDay[day]+=h; } } } var norm=parseFloat(rows[r].dataset.norm); var remainder=norm-hours; rows[r].querySelector('.shifts-col').textContent=shifts; rows[r].querySelector('.hours-col').textContent=hours.toFixed(1); var remCell=rows[r].querySelector('.remainder-col'); remCell.textContent=(remainder>=0?'+':'')+remainder.toFixed(1); remCell.className='remainder-col '+(remainder>=0?'positive':'negative'); totalShiftsAll+=shifts; totalHoursAll+=hours; totalNormAll+=norm; } var totalRow=document.querySelector('.count-row'); if(totalRow) { for(var d=1;d<=30;d++) totalRow.cells[d].textContent=shiftsByDay[d]; totalRow.cells[31].textContent=totalShiftsAll; totalRow.cells[32].textContent=totalHoursAll.toFixed(1); var totalRemainder=totalNormAll-totalHoursAll; totalRow.cells[33].textContent=(totalRemainder>=0?'+':'')+totalRemainder.toFixed(1); totalRow.cells[33].className='remainder-col '+(totalRemainder>=0?'positive':'negative'); } }
+
+// ============================================
+// 🔙 ИСТОРИЯ
+// ============================================
+function saveHistory() { if(historyIdx<history.length-1) history=history.slice(0,historyIdx+1); var currentState={}; var cells=document.querySelectorAll('.cell'); for(var i=0;i<cells.length;i++) { var key=cells[i].dataset.row+'-'+cells[i].dataset.day; currentState[key]={text:cells[i].textContent,className:cells[i].className}; } history.push(currentState); historyIdx++; if(history.length>30) { history.shift(); historyIdx--; } }
+function undo() { if(historyIdx>0) { historyIdx--; var state=history[historyIdx]; var cells=document.querySelectorAll('.cell'); for(var i=0;i<cells.length;i++) { var key=cells[i].dataset.row+'-'+cells[i].dataset.day; var data=state[key]; if(data) { cells[i].textContent=data.text; cells[i].className=data.className; } else { cells[i].textContent=''; cells[i].className='cell'; var day=parseInt(cells[i].dataset.day); if(WEEKENDS.indexOf(day)>=0) cells[i].classList.add('weekend'); if(HOLIDAYS.indexOf(day)>=0) cells[i].classList.add('holiday'); } } calc(); saveData(false); showToast('↩️ Отменено','info'); } else { showToast('ℹ️ Нечего','info'); } }
+
+// ============================================
+// 💾 СОХРАНЕНИЕ, ЗАГРУЗКА, ЭКСПОРТ, ИМПОРТ
+// ============================================
+function saveData(showToastMsg) { var data={}; var cells=document.querySelectorAll('.cell'); for(var i=0;i<cells.length;i++) { var key=cells[i].dataset.row+'-'+cells[i].dataset.day; if(cells[i].textContent || cells[i].className!=='cell') { data[key]={text:cells[i].textContent,className:cells[i].className}; } } try { localStorage.setItem(STORAGE_KEY,JSON.stringify(data)); localStorage.setItem(STORAGE_TIME_KEY,new Date().toISOString()); updateLastSaveTime(); if(showToastMsg) showToast('💾 Сохранено '+Object.keys(data).length+' ячеек!','success',2000); console.log('✅ СОХРАНЕНО:',Object.keys(data).length,'ячеек'); } catch(e) { console.error(e); showToast('❌ Ошибка сохранения!','error'); } }
+function forceSave() { saveData(true); }
+function loadData() { try { var local=localStorage.getItem(STORAGE_KEY); if(local) { var cellData=JSON.parse(local); var cells=document.querySelectorAll('.cell'); for(var i=0;i<cells.length;i++) { var key=cells[i].dataset.row+'-'+cells[i].dataset.day; var data=cellData[key]; if(data) { cells[i].textContent=data.text; cells[i].className=data.className; } } calc(); updateLastSaveTime(); showToast('✅ Загружено из браузера','success'); } else { showToast('ℹ️ Нет сохранённых данных','info'); } } catch(e) { console.error(e); showToast('❌ Ошибка загрузки','error'); } }
+function updateLastSaveTime() { var lastSave=localStorage.getItem(STORAGE_TIME_KEY); var timeDisplay=document.getElementById('lastSaveTime'); if(lastSave) { var date=new Date(lastSave); timeDisplay.textContent=date.toLocaleTimeString('ru-RU',{hour:'2-digit',minute:'2-digit'}); } else { timeDisplay.textContent='--:--'; } }
+
+// 📤 ЭКСПОРТ В JSON (скачать файл)
+function exportData() {
+    var rawData = localStorage.getItem(STORAGE_KEY);
+    if(!rawData) { showToast('Нет данных для экспорта','error'); return; }
+    var blob = new Blob([rawData], {type: 'application/json'});
+    var a = document.createElement('a');
+    var timestamp = new Date().toISOString().slice(0,19).replace(/:/g,'-');
+    a.download = `schedule_${timestamp}.json`;
+    a.href = URL.createObjectURL(blob);
+    a.click();
+    URL.revokeObjectURL(a.href);
+    showToast('📁 Экспорт выполнен (JSON)','success');
+}
+
+// 📥 ИМПОРТ ИЗ JSON (полная замена данных)
+function importData() {
+    var input = document.createElement('input');
+    input.type = 'file';
+    input.accept = 'application/json';
+    input.onchange = function(e) {
+        var file = e.target.files[0];
+        if(!file) return;
+        var reader = new FileReader();
+        reader.onload = function(evt) {
+            try {
+                var imported = JSON.parse(evt.target.result);
+                if(typeof imported !== 'object') throw new Error('Неверный формат JSON');
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(imported));
+                loadData();  // перезагружаем таблицу
+                history = [];   // сбрасываем историю после импорта
+                historyIdx = -1;
+                showToast('✅ Импорт успешен! Данные заменены','success');
+            } catch(err) {
+                showToast('❌ Ошибка импорта: '+err.message,'error');
+            }
+        };
+        reader.readAsText(file);
+    };
+    input.click();
+}
+
+// ============================================
+// 🔍 ЗУМ
+// ============================================
+function zoomIn() { zoom=Math.min(zoom+0.1,1.5); applyZoom(); }
+function zoomOut() { zoom=Math.max(zoom-0.1,0.6); applyZoom(); }
+function applyZoom() { document.getElementById('tbl').style.transform='scale('+zoom+')'; document.getElementById('tbl').style.transformOrigin='top left'; document.getElementById('zoomVal').textContent=Math.round(zoom*100)+'%'; }
+
+// ============================================
+// 🏖 ОТПУСК
+// ============================================
+function openVacationModal() { if(mode!=='admin') { showToast('❌ Только админ','error'); return; } document.getElementById('vacEmpSelect').value=currentEmpIndex>=0?currentEmpIndex:0; document.getElementById('vacationModal').classList.add('active'); }
+function applyVacation() { var empIdx=parseInt(document.getElementById('vacEmpSelect').value); var start=parseInt(document.getElementById('vacStart').value); var end=parseInt(document.getElementById('vacEnd').value); if(start>end||start<1||end>30) { showToast('❌ Некорректные даты','error'); return; } saveHistory(); for(var d=start;d<=end;d++) { var cell=document.querySelector('.cell[data-row="'+empIdx+'"][data-day="'+d+'"]'); if(cell) { cell.classList.remove('night','day','short','blocked','weekend','holiday'); cell.classList.add('vacation'); cell.textContent='О'; } } closeModal('vacationModal'); calc(); saveData(false); showToast('🏖 Отпуск: '+start+'-'+end,'success'); }
+function openEmpVacationModal() { if(mode!=='employee') { showToast('❌ Только сотрудник','error'); return; } document.getElementById('modalEmpName').textContent=currentEmp; document.getElementById('empVacationModal').classList.add('active'); }
+function applyEmpVacation() { var start=parseInt(document.getElementById('empVacStart').value); var end=parseInt(document.getElementById('empVacEnd').value); if(start>end||start<1||end>30) { showToast('❌ Некорректные даты','error'); return; } saveHistory(); for(var d=start;d<=end;d++) { var cell=document.querySelector('.cell[data-row="'+currentEmpIndex+'"][data-day="'+d+'"]'); if(cell) { cell.classList.remove('night','day','short','blocked','weekend','holiday'); cell.classList.add('vacation'); cell.textContent='О'; } } closeModal('empVacationModal'); calc(); saveData(false); showToast('🏖 Отпуск: '+start+'-'+end,'success'); }
+
+// ============================================
+// ⚙️ ВСПОМОГАТЕЛЬНЫЕ
+// ============================================
+function toggleEdit() { if(mode!=='admin') { showToast('❌ Только админ','error'); return; } editMode=!editMode; updateEditBtn(); showToast(editMode?'✏️ Правка ВКЛ':'🔒 Правка ВЫКЛ','info'); }
+function updateEditBtn() { var btn=document.getElementById('toggleEditBtn'); if(editMode) { btn.classList.add('active'); btn.textContent='❌ Стоп'; } else { btn.classList.remove('active'); btn.textContent='✏️ Правка'; } }
+document.getElementById('fillAllWorkDaysBtn').addEventListener('click',function(e){ e.stopPropagation(); if(mode!=='admin') { showToast('❌ Только админ','error'); return; } saveHistory(); var cells=document.querySelectorAll('.cell'); for(var i=0;i<cells.length;i++){ var day=parseInt(cells[i].dataset.day); if(WORK_DAYS.indexOf(day)>=0){ cells[i].textContent='7.8'; cells[i].classList.remove('night','short','blocked','vacation','weekend','holiday'); cells[i].classList.add('day'); } } calc(); saveData(false); showToast('📅 7.8ч всем','success'); });
+function resetData() { if(confirm('⚠️ Удалить все данные?')) { localStorage.removeItem(STORAGE_KEY); localStorage.removeItem(STORAGE_TIME_KEY); history=[]; historyIdx=-1; var cells=document.querySelectorAll('.cell'); for(var i=0;i<cells.length;i++){ cells[i].textContent=''; cells[i].className='cell'; var day=parseInt(cells[i].dataset.day); if(WEEKENDS.indexOf(day)>=0) cells[i].classList.add('weekend'); if(HOLIDAYS.indexOf(day)>=0) cells[i].classList.add('holiday'); } calc(); updateLastSaveTime(); showToast('🔄 Сброшено','info'); } }
+function exportCSV() { var csv='Сотрудник,'; for(var d=1;d<=30;d++) csv+=d+','; csv+='Смен,Часы,Ост.\n'; var rows=document.querySelectorAll('#tableBody tr[data-emp]'); for(var r=0;r<rows.length;r++){ csv+=rows[r].querySelector('td:first-child').textContent+','; var cells=rows[r].querySelectorAll('.cell'); for(var c=0;c<cells.length;c++) csv+=cells[c].textContent+','; csv+=rows[r].querySelector('.shifts-col').textContent+','; csv+=rows[r].querySelector('.hours-col').textContent+','; csv+=rows[r].querySelector('.remainder-col').textContent+'\n'; } var blob=new Blob([csv],{type:'text/csv;charset=utf-8'}); var a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='график.csv'; a.click(); showToast('📄 CSV готов','success'); }
+function exportPDF() { showToast('📕 Печать...','info'); setTimeout(function(){ window.print(); },500); }
+function takeScreenshot() { showToast('📸 Скриншот...','info'); html2canvas(document.querySelector('.table-wrapper'),{scale:2}).then(function(canvas){ var a=document.createElement('a'); a.download='график.png'; a.href=canvas.toDataURL(); a.click(); showToast('✅ Готово','success'); }); }
+function openPreview() { document.getElementById('previewTable').innerHTML=document.getElementById('tbl').innerHTML; openModal('previewModal'); }
+function openModal(id) { document.getElementById(id).classList.add('active'); }
+function closeModal(id) { document.getElementById(id).classList.remove('active'); }
+var modals=document.querySelectorAll('.modal'); for(var m=0;m<modals.length;m++){ modals[m].addEventListener('click',function(e){ if(e.target===this) closeModal(this.id); }); }
+function showToast(msg,type,duration){ if(!duration)duration=2500; var toast=document.getElementById('toast'); toast.textContent=msg; toast.className='toast show '+type; setTimeout(function(){ toast.classList.remove('show'); },duration); }
+document.getElementById('empCantWorkBtn').addEventListener('click',function(e){ e.stopPropagation(); if(mode!=='employee'){ showToast('❌ Только сотрудник','error'); return; } if(selectedCell && parseInt(selectedCell.dataset.row)===currentEmpIndex){ saveHistory(); if(selectedCell.classList.contains('blocked')){ selectedCell.classList.remove('blocked'); selectedCell.textContent=''; var day=parseInt(selectedCell.dataset.day); if(WEEKENDS.indexOf(day)>=0) selectedCell.classList.add('weekend'); if(HOLIDAYS.indexOf(day)>=0) selectedCell.classList.add('holiday'); } else { selectedCell.classList.remove('night','day','short','vacation','weekend','holiday'); selectedCell.classList.add('blocked'); selectedCell.textContent='X'; } calc(); saveData(false); showToast('🚫 Изменено','info'); } else { showToast('👆 Выберите ячейку','info'); } });
+document.getElementById('clearEmpMarksBtn').addEventListener('click',function(e){ e.stopPropagation(); if(mode!=='employee'){ showToast('❌ Только сотрудник','error'); return; } saveHistory(); var cells=document.querySelectorAll('.cell[data-row="'+currentEmpIndex+'"]'); for(var i=0;i<cells.length;i++){ cells[i].textContent=''; cells[i].className='cell'; var day=parseInt(cells[i].dataset.day); if(WEEKENDS.indexOf(day)>=0) cells[i].classList.add('weekend'); if(HOLIDAYS.indexOf(day)>=0) cells[i].classList.add('holiday'); } calc(); saveData(false); showToast('✓ Сброшено','success'); });
 </script>
 </body>
 </html>
