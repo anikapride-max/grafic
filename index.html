@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>График — Июнь 2026 ☁️ Синхронизация</title>
+<title>График — Июнь 2026 ☁️</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
@@ -11,17 +11,14 @@ body{font-family:Arial,sans-serif;font-size:13px;background:#fff}
 .header{background:linear-gradient(135deg,#1F4E78,#2E5C8A);color:#fff;padding:15px;text-align:center;position:sticky;top:0;z-index:300;font-size:18px;box-shadow:0 4px 8px rgba(0,0,0,0.2)}
 .header h1{font-size:20pt;margin:0;white-space:nowrap;text-shadow:2px 2px 4px rgba(0,0,0,0.3)}
 .toolbar{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;padding:8px;background:#f8f9fa;border-bottom:2px solid #ddd}
-.btn{padding:8px 14px;border:2px solid #000;font-weight:bold;cursor:pointer;border-radius:6px;font-size:12px;background:#4472C4;color:#fff}
-.btn:hover{background:#355a9a}
+.btn{padding:8px 14px;border:2px solid #000;font-weight:bold;cursor:pointer;border-radius:6px;font-size:12px;background:#4472C4;color:#fff}.btn:hover{background:#355a9a}
 .btn-vacation{background:#E91E63}.btn-save{background:#217346}.btn-danger{background:#C00000}.btn-info{background:#17a2b8}
 .btn-admin{background:#9C27B0}.btn-employee{background:#009688}
 .zoom-controls{display:flex;gap:4px;align-items:center;background:#fff;padding:6px 10px;border:2px solid #000;border-radius:6px}
-.zoom-btn{width:34px;height:34px;padding:0;font-size:20px;font-weight:bold;background:#607D8B;color:#fff;border:2px solid #000;border-radius:4px;cursor:pointer}
-.zoom-btn:hover{background:#455A64}
+.zoom-btn{width:34px;height:34px;padding:0;font-size:20px;font-weight:bold;background:#607D8B;color:#fff;border:2px solid #000;border-radius:4px;cursor:pointer}.zoom-btn:hover{background:#455A64}
 .zoom-val{min-width:55px;text-align:center;font-weight:bold;font-size:12px}
 .color-picker{display:flex;gap:3px;margin-left:5px;align-items:center}
-.color-btn{width:26px;height:26px;border:2px solid #000;border-radius:3px;cursor:pointer;padding:0}
-.color-btn:hover{transform:scale(1.15)}
+.color-btn{width:26px;height:26px;border:2px solid #000;border-radius:3px;cursor:pointer;padding:0}.color-btn:hover{transform:scale(1.15)}
 .mode-panel{background:#fff;padding:12px;margin:5px;border:2px solid #000;border-radius:8px;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:center;font-size:13px}
 .mode-panel label{font-weight:bold;margin-right:3px}
 .mode-panel select{padding:8px;border:2px solid #000;border-radius:6px;font-size:13px}
@@ -40,14 +37,12 @@ body{font-family:Arial,sans-serif;font-size:13px;background:#fff}
 .short{background:#FFEB9C;font-weight:bold;color:#664D00}
 .blocked{background:#A5A5A5;color:#fff;font-weight:bold}
 .employee-blocked{background:#FFB6C1!important;border:2px dashed #E91E63;color:#000!important;font-weight:bold}
-.editable{cursor:pointer}.editable:hover{background:#E8F4FD}
-.editable.selected{background:#FFD700!important;box-shadow:inset 0 0 0 2px #000}
+.editable{cursor:pointer}.editable:hover{background:#E8F4FD}.editable.selected{background:#FFD700!important;box-shadow:inset 0 0 0 2px #000}
 .count-row{background:#FFD966;font-weight:bold}
 .section{background:#4472C4;color:#fff;font-weight:bold}
 .positive{color:#006100;font-weight:bold}.negative{color:#9C0006;font-weight:bold}
 .quick-actions{display:flex;gap:6px;justify-content:center;padding:8px;background:#f8f9fa;border-top:2px solid #ddd;flex-wrap:wrap;font-size:12px}
-.quick-btn{padding:8px 12px;background:#fff;border:2px solid #000;border-radius:6px;font-size:12px;cursor:pointer;font-weight:bold}
-.quick-btn:active{background:#4472C4;color:#fff}
+.quick-btn{padding:8px 12px;background:#fff;border:2px solid #000;border-radius:6px;font-size:12px;cursor:pointer;font-weight:bold}.quick-btn:active{background:#4472C4;color:#fff}
 .employee-controls{background:#E8F5E9;padding:12px;margin:5px;border:2px solid #009688;border-radius:8px;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:center;font-size:13px}
 .toast{position:fixed;bottom:15px;right:15px;background:#333;color:#fff;padding:12px 18px;border-radius:8px;z-index:1000;opacity:0;transition:0.3s;max-width:320px;font-size:13px}
 .toast.show{opacity:1}.toast.success{background:#217346}.toast.error{background:#C00000}
@@ -58,27 +53,33 @@ body{font-family:Arial,sans-serif;font-size:13px;background:#fff}
 .modal-content input,.modal-content select{width:100%;padding:8px;border:2px solid #000;border-radius:4px;font-size:14px}
 .modal-buttons{display:flex;gap:10px;justify-content:flex-end;margin-top:15px}
 .preview-bar{position:fixed;bottom:0;left:0;right:0;background:linear-gradient(135deg,#2E5C8A,#1F4E78);color:#fff;padding:10px;text-align:center;z-index:400;box-shadow:0 -2px 8px rgba(0,0,0,0.2)}
-.preview-btn{background:#FFD700;color:#000;border:2px solid #000;padding:10px 25px;font-size:13px;font-weight:bold;border-radius:6px;cursor:pointer;margin:0 10px}
-.preview-btn:hover{background:#FFC107}
+.preview-btn{background:#FFD700;color:#000;border:2px solid #000;padding:10px 25px;font-size:13px;font-weight:bold;border-radius:6px;cursor:pointer;margin:0 10px}.preview-btn:hover{background:#FFC107}
 @media (max-width:1024px){.excel-table th,.excel-table td{min-width:34px;font-size:11px}.excel-table tbody td:first-child{min-width:115px}.toolbar{gap:3px}.btn,.quick-btn{padding:6px 10px;font-size:11px}.header h1{font-size:18pt}.preview-bar{padding:8px}.preview-btn{padding:8px 20px;font-size:12px}}
 @media (max-width:768px){.mode-panel{flex-direction:column;align-items:stretch}.toolbar{flex-wrap:wrap;justify-content:flex-start}.btn,.quick-btn{flex:1 0 auto;margin:3px}.color-picker{order:1;width:100%;justify-content:center}.zoom-controls{order:2;width:100%;justify-content:center}.excel-table{min-width:1000px}.table-container{height:75vh}.header h1{font-size:16pt}.preview-bar{position:relative;bottom:auto;left:auto;right:auto}}
 @media print{.toolbar,.mode-panel,.quick-actions,.status-bar,.toast,.modal,.employee-controls,.color-picker,.zoom-controls,.preview-bar{display:none!important}.table-container{height:auto;overflow:visible;border:none;margin:0}.excel-table{font-size:10px;transform:none!important}.excel-table th,.excel-table td{width:30px;height:32px;padding:1px}.excel-table tbody td:first-child{position:static;min-width:80px}.shifts-col,.hours-col,.remainder-col{position:static;background:#fff!important}}
 </style>
 </head>
 <body>
+
+<!-- ✅ ИНДИКАТОР СИНХРОНИЗАЦИИ -->
+<div class="sync-status" style="position:fixed;top:10px;right:10px;background:#fff;border:2px solid #000;border-radius:6px;padding:6px 12px;font-size:11px;z-index:500;display:flex;align-items:center;gap:6px">
+    <div class="sync-dot" id="syncDot" style="width:10px;height:10px;border-radius:50%;background:#217346"></div>
+    <span id="syncText">☁️ Синхронизация активна</span>
+</div>
+
 <div class="header"><h1>📊 ГРАФИК — ИЮНЬ 2026 ☁️</h1></div>
+
 <div class="mode-panel">
 <div><label>🔐</label><select id="modeSelect" onchange="changeMode()"><option value="admin" selected>Админ</option><option value="employee">Сотрудник</option></select></div>
 <div id="adminDiv"><button class="btn btn-admin" onclick="enableAdmin()">🔓 Админ</button></div>
 <div id="empDiv" style="display:none"><label>👤</label><select id="empSelect"></select><button class="btn btn-employee" onclick="selectEmployee()">Выбрать</button></div>
 </div>
+
 <div class="toolbar" id="adminToolbar">
 <button class="btn" onclick="toggleEdit()">✏️</button>
 <button class="btn btn-vacation" onclick="toggleVacation()">🏖</button>
 <button class="btn" onclick="undo()">↩️</button>
-<button class="btn btn-info" onclick="exportData()">📤 Экспорт</button>
-<button class="btn btn-info" onclick="document.getElementById('importFile').click()">📥 Импорт</button>
-<input type="file" id="importFile" accept=".json" style="display:none" onchange="importData(this)">
+<button class="btn btn-save" onclick="saveData()">💾</button>
 <button class="btn" onclick="exportCSV()">📄 CSV</button>
 <button class="btn btn-danger" onclick="exportToPDF()">📕 PDF</button>
 <button class="btn btn-info" onclick="captureAsImage()">📸 Фото</button>
@@ -101,6 +102,7 @@ body{font-family:Arial,sans-serif;font-size:13px;background:#fff}
 <button class="color-btn" style="background:#fff" onclick="setColor('')" title="Сброс">↺</button>
 </div>
 </div>
+
 <div class="quick-actions" id="adminQuick">
 <button class="quick-btn" onclick="quickSet('23')">23ч</button>
 <button class="quick-btn" onclick="quickSet('7.8')">7.8ч</button>
@@ -111,6 +113,7 @@ body{font-family:Arial,sans-serif;font-size:13px;background:#fff}
 <button class="quick-btn" onclick="setVac(28)">28д</button>
 <button class="quick-btn" style="background:#E91E63;color:white" onclick="openAdminVacation()">🏖 Отпуск (админ)</button>
 </div>
+
 <div class="employee-controls" id="empControls">
 <span style="font-weight:bold;font-size:14px">👤 <span id="empName">не выбран</span></span>
 <button class="quick-btn" style="background:#E91E63;color:white" onclick="openEmpVacation()">🏖 Отпуск</button>
@@ -118,7 +121,9 @@ body{font-family:Arial,sans-serif;font-size:13px;background:#fff}
 <button class="quick-btn" onclick="clearEmpMarks()">✓ Сброс</button>
 <button class="quick-btn" style="background:#607D8B;color:white" onclick="logout()">🚪 Выход</button>
 </div>
+
 <div class="status-bar" id="status">✅ Норма: 171.6ч • ☁️ Автосинхронизация включена</div>
+
 <div class="table-container" id="tblContainer">
 <table class="excel-table" id="tbl">
 <thead>
@@ -202,10 +207,12 @@ body{font-family:Arial,sans-serif;font-size:13px;background:#fff}
 </tbody>
 </table>
 </div>
+
 <div class="preview-bar">
 <button class="preview-btn" onclick="openPreview()">👁️ Посмотреть предварительный график</button>
 <span style="margin-left:15px;font-size:12px;opacity:0.9">• ☁️ Автосинхронизация каждые 10 сек •</span>
 </div>
+
 <!-- Модальные окна -->
 <div id="previewModal" class="modal"><div class="modal-content" style="max-width:800px"><h3>👁️ Предварительный просмотр</h3><div style="max-height:60vh;overflow:auto;border:2px solid #000"><table class="excel-table" id="previewTable"></table></div><div class="modal-buttons"><button class="btn" onclick="closePreview()">Закрыть</button></div></div></div>
 <div id="empVacationModal" class="modal"><div class="modal-content"><h3>🏖 Отпуск</h3><p><strong>Сотрудник:</strong> <span id="modalEmpName"></span></p><label>Начало: <input type="number" id="empVacStart" min="1" max="30" value="1"></label><label>Конец: <input type="number" id="empVacEnd" min="1" max="30" value="14"></label><div class="modal-buttons"><button class="btn" onclick="closeEmpVacation()">Отмена</button><button class="btn btn-vacation" onclick="applyEmpVacation()">Применить</button></div></div></div>
@@ -216,9 +223,9 @@ body{font-family:Arial,sans-serif;font-size:13px;background:#fff}
 <div class="toast" id="toast"></div>
 
 <script>
-// ===== 🔥 НАСТРОЙКИ JSONBIN.IO (ВСТАВЬТЕ СВОИ!) =====
-const JSONBIN_API_KEY = "$2a$10$AJZ4ntehz0kxDzWhVoIJz.ouEFPJWRtWE8vxkhgyNGUZT2PRj9p2m";  // ← ВСТАВЬТЕ СЮДА
-const JSONBIN_ID = "69bef911b7ec241ddc8d3f91";       // ← ВСТАВЬТЕ СЮДА
+// ===== 🔥 JSONBIN.IO НАСТРОЙКИ (ВАШИ КЛЮЧИ) =====
+const JSONBIN_API_KEY = "$2a$10$AJZ4ntehz0kxDzWhVoIJz.ouEFPJWRtWE8vxkhgyNGUZT2PRj9p2m";
+const JSONBIN_ID = "69bef911b7ec241ddc8d3f91";
 const JSONBIN_URL = `https://api.jsonbin.io/v3/b/${JSONBIN_ID}`;
 // ===== ГЛОБАЛЬНЫЕ =====
 let mode='admin',adminOK=false,emp=null,selected=null,vacMode=false,zoom=1;
@@ -226,37 +233,82 @@ let empData={},history=[],hIdx=-1,redo=[],edit=false;
 const emps=["Керножицкая","Сухова","Чупрова","Быкова","Гомбоева","Зюкова 0.75","Ефимова","Гайсин","Конькова","Голубева","Засыпкина","Сафронова","Спорыхина","Аникиев","Салашинская","Юдина","Яшина","Павлов","Соколова"];
 const productionCalendar={workDays:[1,2,3,4,5,8,9,10,11,12,15,16,17,18,19,22,23,24,25,26,29,30],normHours:171.6};
 const PRODUCTION_NORM=productionCalendar.normHours;
-// ===== СОХРАНЕНИЕ В JSONBIN =====
+// ===== СИНХРОНИЗАЦИЯ С JSONBIN =====
 let saveTimeout=null,isSyncing=false;
-function scheduleSave(){if(saveTimeout)clearTimeout(saveTimeout);saveTimeout=setTimeout(()=>{saveToCloud();},1000);}
+function updateSyncStatus(status,text){
+    const dot=document.getElementById('syncDot');
+    const txt=document.getElementById('syncText');
+    dot.className='sync-dot '+status;
+    txt.textContent=text;
+}
+function scheduleSave(){
+    if(saveTimeout)clearTimeout(saveTimeout);
+    saveTimeout=setTimeout(()=>{saveToCloud();},1000);
+}
 async function saveToCloud(){
     if(isSyncing)return;
     isSyncing=true;
+    updateSyncStatus('syncing','Сохранение...');
     const cellsData=[];
     document.querySelectorAll('.editable').forEach(c=>{
-        cellsData.push({h:c.dataset.h||'',text:c.textContent,className:c.className,emp:c.dataset.emp||'',adm:c.dataset.adm||'',bgColor:c.dataset.bgColor||''});
+        cellsData.push({
+            h:c.dataset.h||'',text:c.textContent,className:c.className,
+            emp:c.dataset.emp||'',adm:c.dataset.adm||'',
+            bgColor:c.dataset.bgColor||'',
+            unavailable:c.classList.contains('employee-blocked')?'1':''
+        });
     });
-    const payload={cells:cellsData,employeeData:empData,lastSave:new Date().toISOString()};
+    const payload={
+        cells:cellsData,
+        employeeData:empData,
+        history:history,
+        hIdx:hIdx,
+        adminOK:adminOK?'1':'0',
+        edit:edit?'1':'0',
+        zoom:zoom,
+        lastSave:new Date().toISOString()
+    };
     try{
         await fetch(JSONBIN_URL,{
             method:"PUT",
-            headers:{"Content-Type":"application/json","X-Master-Key":JSONBIN_API_KEY},
+            headers:{
+                "Content-Type":"application/json",
+                "X-Master-Key":JSONBIN_API_KEY
+            },
             body:JSON.stringify(payload)
         });
         localStorage.setItem('grafik_cloud',JSON.stringify(payload));
-    }catch(e){console.error("Ошибка сохранения:",e);}
+        updateSyncStatus('synced','☁️ Синхронизировано');
+        setTimeout(()=>{updateSyncStatus('synced','☁️ Синхронизация активна');},2000);
+    }catch(e){
+        console.error("Ошибка сохранения:",e);
+        updateSyncStatus('','❌ Ошибка синхронизации');
+    }
     isSyncing=false;
 }
 async function loadFromCloud(){
+    updateSyncStatus('syncing','Загрузка...');
     try{
-        const resp=await fetch(JSONBIN_URL,{headers:{"X-Master-Key":JSONBIN_API_KEY}});
+        const resp=await fetch(JSONBIN_URL,{
+            headers:{"X-Master-Key":JSONBIN_API_KEY}
+        });
         if(resp.ok){
             const data=await resp.json();
-            if(data.record){applyData(data.record);}
+            if(data.record){
+                applyData(data.record);
+                updateSyncStatus('synced','☁️ Синхронизировано');
+                showToast("✅ Данные загружены из облака","success");
+            }
         }
     }catch(e){
+        console.error("Ошибка загрузки:",e);
         const local=localStorage.getItem('grafik_cloud');
-        if(local)applyData(JSON.parse(local));
+        if(local){
+            applyData(JSON.parse(local));
+            updateSyncStatus('synced','📦 Загружено из резерва');
+        }else{
+            updateSyncStatus('synced','☁️ Синхронизация активна');
+        }
     }
 }
 function applyData(data){
@@ -272,6 +324,11 @@ function applyData(data){
         }
     });
     if(data.employeeData)empData=data.employeeData;
+    if(data.history)history=data.history;
+    if(data.hIdx)hIdx=data.hIdx;
+    if(data.adminOK)adminOK=data.adminOK==='1';
+    if(data.edit)edit=data.edit==='1';
+    if(data.zoom)zoom=data.zoom;
     calc();
     if(emp)applyEmpMarks();
 }
@@ -314,10 +371,7 @@ document.getElementById('tbl').addEventListener('dblclick',e=>{const c=e.target.
 document.getElementById('tbl').addEventListener('click',e=>{const c=e.target.closest('.editable');if(!c)return;e.stopPropagation();document.querySelectorAll('.selected').forEach(x=>x.classList.remove('selected'));selected=c;c.classList.add('selected');const row=c.closest('tr');if(row&&row.cells[0]){emp=row.cells[0].textContent.trim();document.getElementById('status').textContent=`✅ Выбран: ${emp}`;}if(mode==='admin'&&adminOK&&edit){const row=c.closest('tr');if(row.classList.contains('night-row')){const day=Array.from(row.children).indexOf(c);if(day>=1&&day<=30&&!c.textContent){setCell(c,'23');calc();scheduleSave();}}}if(vacMode&&mode==='admin'&&adminOK&&c.classList.contains('blocked')){setCell(c,'23');delete c.dataset.adm;calc();scheduleSave();}});
 let dragS=null,dragging=false;document.querySelectorAll('.editable').forEach(c=>{c.addEventListener('mousedown',e=>{if(vacMode&&mode==='admin'&&adminOK){e.preventDefault();dragging=true;dragS=c;}});c.addEventListener('mouseover',()=>{if(!dragging||!dragS||mode!=='admin')return;const row=dragS.parentElement;if(c.parentElement!==row)return;const sc=Array.from(row.children).indexOf(dragS),ec=Array.from(row.children).indexOf(c);const mn=Math.min(sc,ec),mx=Math.max(sc,ec);for(let i=mn;i<=mx&&i<=30;i++){if(i===0)continue;const x=row.cells[i];if(x){x.dataset.h='';x.textContent='—';x.classList.add('blocked');x.dataset.adm='1';x.classList.remove('employee-blocked');delete x.dataset.emp;}}}});document.addEventListener('mouseup',()=>{if(dragging){dragging=false;dragS=null;calc();scheduleSave();}});
 function zoomIn(){zoom=Math.min(zoom+0.1,2);applyZoom();}function zoomOut(){zoom=Math.max(zoom-0.1,0.5);applyZoom();}function zoomReset(){zoom=1;applyZoom();}function applyZoom(){document.getElementById('tbl').style.transform=`scale(${zoom})`;document.getElementById('zoomVal').textContent=Math.round(zoom*100)+'%';}
-function exportData(){const cellsData=[];document.querySelectorAll('.editable').forEach(c=>{cellsData.push({h:c.dataset.h||'',text:c.textContent,className:c.className,emp:c.dataset.emp||'',adm:c.dataset.adm||'',bgColor:c.dataset.bgColor||''});});const exportObj={cells:cellsData,employeeData:empData,exportDate:new Date().toISOString()};const blob=new Blob([JSON.stringify(exportObj,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='grafik_export_'+new Date().toISOString().slice(0,10)+'.json';a.click();showToast('📤 Экспорт выполнен','success');}
-function importData(input){const file=input.files[0];if(!file)return;const reader=new FileReader();reader.onload=e=>{try{const data=JSON.parse(e.target.result);if(data.cells&&Array.isArray(data.cells)){const cells=document.querySelectorAll('.editable');data.cells.forEach((cd,i)=>{if(cells[i]){const c=cells[i];c.dataset.h=cd.h||'';c.textContent=cd.text||'';c.className=cd.className||'editable';if(cd.bgColor){c.style.backgroundColor=cd.bgColor;c.dataset.bgColor=cd.bgColor;}if(cd.emp==='1'){c.dataset.emp='1';c.classList.add('employee-blocked');}if(cd.adm==='1')c.dataset.adm='1';}});}if(data.employeeData)empData=data.employeeData;calc();if(emp)applyEmpMarks();scheduleSave();showToast('📥 Импорт выполнен','success');}catch(err){showToast('❌ Ошибка импорта','error');}};reader.readAsText(file);input.value='';}
-function openPreview(){const previewTable=document.getElementById('previewTable');previewTable.innerHTML='';const thead=document.createElement('thead'),headerRow=document.querySelector('#tbl thead tr').cloneNode(true);thead.appendChild(headerRow);previewTable.appendChild(thead);const tbody=document.createElement('tbody');document.querySelectorAll('.night-row,.day-row,.count-row').forEach(row=>{if(row.style.display!=='none'){const newRow=row.cloneNode(true);newRow.querySelectorAll('.editable').forEach(c=>{c.classList.remove('editable','selected');c.contentEditable='false';c.style.cursor='default';});tbody.appendChild(newRow);}});previewTable.appendChild(tbody);document.getElementById('previewModal').style.display='flex';showToast('👁️ Предпросмотр открыт','success');}
-function closePreview(){document.getElementById('previewModal').style.display='none';}
+function exportCSV(){let csv='Сотрудник;';for(let d=1;d<=30;d++)csv+=d+';';csv+='Смен;Часы;Ост.\n';document.querySelectorAll('.night-row,.day-row').forEach(row=>{csv+=row.cells[0].textContent+';';for(let i=1;i<=30;i++)csv+=(row.cells[i].dataset.h||'')+';';csv+=row.cells[31].textContent+';'+row.cells[32].textContent+';'+row.cells[33].textContent+'\n';});const blob=new Blob(['\ufeff'+csv],{type:'text/csv;charset=utf-8'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='grafik.csv';a.click();showToast('📤 CSV готов','success');}
 function exportToPDF(){showToast('📄 Подготовка...','info');try{const pw=window.open('','_blank');let html=`<!DOCTYPE html><html><head><meta charset="UTF-8"><title>График</title><style>body{font-family:Arial,sans-serif;margin:20px;font-size:11px}h1{text-align:center;font-size:18pt}table{border-collapse:collapse;width:100%;font-size:10px}th{background:#1e3c72;color:#fff;padding:4px 2px;border:1px solid #000}td{border:1px solid #000;padding:2px 1px;text-align:center}.night{background:#C6EFCE}.day{background:#BDD7EE}.short{background:#FFEB9C}.holiday{background:#FFC7CE}.weekend{background:#D9D9D9}.total-row{background:#FFD966;font-weight:bold}</style></head><body><h1>📊 ГРАФИК — ИЮНЬ 2026</h1><table border="1"><thead><tr><th>Сотрудник</th>`;for(let d=1;d<=30;d++)html+='<th>'+d+'</th>';html+='<th>Смен</th><th>Часы</th><th>Ост.</th></tr></thead><tbody>';document.querySelectorAll('.night-row,.day-row').forEach(row=>{html+='<tr><td style="font-weight:bold;text-align:left">'+row.cells[0].textContent+'</td>';for(let i=1;i<=30;i++){const c=row.cells[i];let cls='';if(c){if(c.classList.contains('night'))cls='night';else if(c.classList.contains('day'))cls='day';else if(c.classList.contains('short'))cls='short';html+='<td class="'+cls+'">'+(c.dataset.h||'')+'</td>';}else html+='<td></td>';}html+='<td>'+row.cells[31].textContent+'</td><td>'+row.cells[32].textContent+'</td><td>'+row.cells[33].textContent+'</td></tr>';});const tr=document.querySelector('.count-row');if(tr){html+='<tr class="total-row"><td><b>ИТОГО</b></td>';for(let i=1;i<=30;i++)html+='<td>'+(tr.cells[i]?.textContent||'0')+'</td>';html+='<td>'+tr.cells[31].textContent+'</td><td>'+tr.cells[32].textContent+'</td><td>'+tr.cells[33].textContent+'</td></tr>';}html+='</tbody></table></body></html>';pw.document.write(html);pw.document.close();setTimeout(()=>{pw.print();showToast('✅ В печати выберите "Сохранить как PDF"','success');},500);}catch(e){showToast('❌ Ошибка PDF','error');}}
 function captureAsImage(){showToast('📸 Создание скриншота...','info');const element=document.getElementById('tblContainer');html2canvas(element,{scale:2,backgroundColor:'#ffffff',allowTaint:false,useCORS:true,logging:false}).then(canvas=>{const link=document.createElement('a');link.download='grafik_iyun_2026.png';link.href=canvas.toDataURL('image/png');link.click();showToast('✅ Скриншот сохранён','success');}).catch(error=>{console.error('Ошибка:',error);showToast('❌ Ошибка создания скриншота','error');});}
 function fillSelectedEmployeeWorkDays(){if(!adminOK||mode!=='admin'){showToast('❌ Только для админа','error');return;}if(!emp){showToast('❌ Сначала выберите сотрудника','error');return;}if(!confirm(`Заполнить рабочие дни (7.8ч) для ${emp}?`))return;const workDays=productionCalendar.workDays;let targetRow=null;document.querySelectorAll('.night-row,.day-row').forEach(row=>{if(row.cells[0].textContent.trim()===emp)targetRow=row;});if(!targetRow){showToast('❌ Сотрудник не найден','error');return;}workDays.forEach(day=>{const cell=targetRow.cells[day];if(cell&&!cell.dataset.h&&!cell.classList.contains('employee-blocked'))setCell(cell,'7.8');});calc();scheduleSave();showToast(`✅ Заполнено для ${emp}`,'success');}
@@ -326,11 +380,21 @@ function fillAdminEmpSelect(){const sel=document.getElementById('adminVacEmpSele
 function openAdminVacation(){if(!adminOK||mode!=='admin'){showToast('❌ Только для админа','error');return;}fillAdminEmpSelect();document.getElementById('adminVacStart').value=1;document.getElementById('adminVacEnd').value=14;document.getElementById('adminVacationModal').style.display='flex';}
 function closeAdminVacation(){document.getElementById('adminVacationModal').style.display='none';}
 function applyAdminVacation(){const empName=document.getElementById('adminVacEmpSelect').value,start=parseInt(document.getElementById('adminVacStart').value),end=parseInt(document.getElementById('adminVacEnd').value);if(start<1||end>30||start>end){showToast('❌ Некорректные даты','error');return;}closeAdminVacation();let row=null;document.querySelectorAll('.night-row,.day-row').forEach(r=>{if(r.cells[0].textContent.trim()===empName)row=r;});if(!row){showToast('❌ Сотрудник не найден','error');return;}for(let d=start;d<=end;d++){const cell=row.cells[d];if(cell){cell.dataset.h='';cell.textContent='отпуск';cell.classList.add('blocked','employee-blocked','unavailable-mark');cell.dataset.adm='1';delete cell.dataset.emp;}}calc();scheduleSave();showToast(`🏖 Отпуск для ${empName}`,'success');}
-function exportCSV(){let csv='Сотрудник;';for(let d=1;d<=30;d++)csv+=d+';';csv+='Смен;Часы;Ост.\n';document.querySelectorAll('.night-row,.day-row').forEach(row=>{csv+=row.cells[0].textContent+';';for(let i=1;i<=30;i++)csv+=(row.cells[i].dataset.h||'')+';';csv+=row.cells[31].textContent+';'+row.cells[32].textContent+';'+row.cells[33].textContent+'\n';});const blob=new Blob(['\ufeff'+csv],{type:'text/csv;charset=utf-8'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='grafik.csv';a.click();showToast('📤 CSV готов','success');}
 function resetData(){if(confirm('🔄 Сбросить ВСЁ?')){localStorage.removeItem('grafik_cloud');location.reload();}}
+function saveData(){scheduleSave();showToast('💾 Сохранено в облако','success');}
 function showToast(msg,type='info',dur=2000){const t=document.getElementById('toast');t.textContent=msg;t.className='toast '+(type==='error'?'error':'success')+' show';setTimeout(()=>t.classList.remove('show'),dur);}
+function openPreview(){const previewTable=document.getElementById('previewTable');previewTable.innerHTML='';const thead=document.createElement('thead'),headerRow=document.querySelector('#tbl thead tr').cloneNode(true);thead.appendChild(headerRow);previewTable.appendChild(thead);const tbody=document.createElement('tbody');document.querySelectorAll('.night-row,.day-row,.count-row').forEach(row=>{if(row.style.display!=='none'){const newRow=row.cloneNode(true);newRow.querySelectorAll('.editable').forEach(c=>{c.classList.remove('editable','selected');c.contentEditable='false';c.style.cursor='default';});tbody.appendChild(newRow);}});previewTable.appendChild(tbody);document.getElementById('previewModal').style.display='flex';showToast('👁️ Предпросмотр открыт','success');}
+function closePreview(){document.getElementById('previewModal').style.display='none';}
 // ===== ИНИЦИАЛИЗАЦИЯ =====
-window.onload=function(){fillEmpSelect();fillLoginEmpSelect();initializeNorms();loadFromCloud();calc();document.getElementById('loginModal').style.display='flex';setInterval(()=>{loadFromCloud();scheduleSave();},10000);};
+window.onload=function(){
+    fillEmpSelect();
+    fillLoginEmpSelect();
+    initializeNorms();
+    loadFromCloud();
+    calc();
+    document.getElementById('loginModal').style.display='flex';
+    setInterval(()=>{scheduleSave();},10000);
+};
 </script>
 </body>
 </html>
